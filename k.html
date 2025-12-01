@@ -1,0 +1,12 @@
+import requests # Replace with your actual local URL BASE_URL =
+"http://127.0.0.1:8080" # or your IP 165.227... def test_success_page():
+print("Testing Payment Success Endpoint...") # 1. Test without a session ID
+(Should just show the page, no logic run) response =
+requests.get(f"{BASE_URL}/payment-success") if response.status_code == 200:
+print("✅ UI Load Test: Passed") else: print(f"❌ UI Load Test: Failed
+({response.status_code})") # 2. Test with a FAKE session ID (Should log an error
+but still show page) fake_params = {"session_id": "cs_test_fake12345"} response
+= requests.get(f"{BASE_URL}/payment-success", params=fake_params) if
+response.status_code == 200 and "Payment Successful" in response.text: print("✅
+Error Handling Test: Passed (Page loaded despite invalid ID)") else: print("❌
+Error Handling Test: Failed") if __name__ == "__main__": test_success_page()
