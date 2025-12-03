@@ -914,7 +914,7 @@ def getProperty():
         sort_by = request_data.get("sort_by", "default_rank")
         sort_order = request_data.get("sort_order", "desc").lower()
         #limit = int(request_data.get("limit", 6))
-        limit =6
+        limit =50
         offset = int(request_data.get("offset", 0))
 
         con = getConnection()
