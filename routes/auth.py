@@ -699,11 +699,11 @@ def create_property():
         # --- END CREDIT LOGIC ---
 
         # 3. Insert Property
-        # Note: 'logitude' is kept as requested (matching your DB column name)
+        # Note: 'longitude' is kept as requested (matching your DB column name)
         insert_property_query = """
             INSERT INTO properties (
                 agent_id, title, description, price, address, city, state, country, zip_code, 
-                property_type, features, bedrooms, bathrooms, rooms, area_sqft, latitude, logitude, status,
+                property_type, features, bedrooms, bathrooms, rooms, area_sqft, latitude, longitude, status,
                 neighborhood, label, price_unit, before_label, after_label, land_area, garages, 
                 garage_size, year_built, private_note, video_url
             )
@@ -732,7 +732,7 @@ def create_property():
             request.form.get("rooms"),
             request.form.get("area_sqft"),
             request.form.get("latitude"),
-            request.form.get("longitude"), # Value comes from form 'longitude', saves to DB column 'logitude'
+            request.form.get("longitude"), # Value comes from form 'longitude', saves to DB column 'longitude'
             request.form.get("status"),
             # --- New Fields ---
             request.form.get("neighborhood"),
@@ -799,33 +799,48 @@ def create_property():
 
 
 
+
 @auth_bp.route("/change_password", methods=['POST'])
 def change_password():
     data = request.get_json()
     user_id = data.get('user_id')
     old_p = data.get('old_password')
     new_p = data.get('new_password')
+    print(data)
 
     if not user_id:
-        return jsonify(error="user_id is required"),400
+        return jsonify(error="user_id is required"), 400
     if not old_p:
-        return jsonify(error="old Password is required"),400
+        return jsonify(error="old Password is required"), 400
     if not new_p:
-        return jsonify(error="new Password is required"),400   
+        return jsonify(error="new Password is required"), 400   
+    
     con = None
     cursor = None
     try:
         con = getConnection()
         cursor = con.cursor(pymysql.cursors.DictCursor)
-        q = "select password_hash from users where user_id = "
-        cursor.execute(q,user_id)
-        d = cursor.fetchone()
-        if d == old_p:
-            cursor.execute("UPDATE users SET password_hash = %s WHERE user_id = %s", (new_p, user_id))
 
-            return jsonify("Password Updated successfully"),200
+        # STEP 1: Verify the OLD password
+        # We use SHA2(%s, 256) to hash the input and compare it to the stored hash
+        verify_query = "SELECT user_id FROM users WHERE user_id = %s AND password_hash = SHA2(%s, 256)"
+        cursor.execute(verify_query, (user_id, old_p))
+        
+        user = cursor.fetchone()
+
+        if user:
+            # STEP 2: Update to the NEW password
+            # We must wrap the new password in SHA2(%s, 256) so it is stored correctly
+            update_query = "UPDATE users SET password_hash = %s WHERE user_id = %s"
+            cursor.execute(update_query, (new_p, user_id))
+            
+            # CRITICAL: Save the changes to the database
+            con.commit()
+
+            return jsonify("Password Updated successfully"), 200
         else:
-            return jsonify(error = "User_id and Password Do not match"),400
+            return jsonify(error="User_id and Password Do not match"), 400
+
     except Exception as e:
         if con: con.rollback()
         logging.error(f"Error in /changePassword: {e}", exc_info=True)
@@ -843,18 +858,24 @@ def change_password():
 
 @auth_bp.route("/getproperties", methods=["GET", "POST"])
 def getProperty():
-    """
-    A powerful search endpoint to find properties with filters, sorting, pagination,
-    and a ranking system for featured properties.
-    """
     con = None
     cursor = None
     try:
-        # ... (all your existing code for filters, sorting, etc. is perfect) ...
         request_data = request.get_json(silent=True) or request.args
+        print("Incoming Data:", request_data)
+
         conditions = ["p.is_deleted = FALSE"]
         values = []
-        filter_fields = {"property_type": "string", "city": "string", "status": "string", "bedrooms": "int", "bathrooms": "int"}
+
+        # 1. Standard Filters
+        # Removed 'status' from here to handle it manually below
+        filter_fields = {
+            "property_type": "string", 
+            "city": "string", 
+            "bedrooms": "int", 
+            "bathrooms": "int"
+        }
+
         for field, f_type in filter_fields.items():
             value = request_data.get(field)
             if value:
@@ -862,24 +883,44 @@ def getProperty():
                     conditions.append(f"p.{field} {'LIKE' if f_type == 'string' else '='} %s")
                     values.append(f"%{value}%" if f_type == 'string' else int(value))
                 except ValueError:
-                    return jsonify(error=f"Invalid value for '{field}'. Expected an integer."), 400
-        range_filters = {"min_price": "p.price >= %s", "max_price": "p.price <= %s", "min_bedrooms": "p.bedrooms >= %s", "max_bedrooms": "p.bedrooms <= %s"}
+                    return jsonify(error=f"Invalid value for '{field}'"), 400
+
+        # 2. FILTER FIX: Map 'listing_type' (Frontend) -> 'status' (Database)
+        listing_type = request_data.get("listing_type") 
+        if listing_type:
+            # Maps "RENT" -> "rent" and checks p.status
+            conditions.append("p.status = %s")
+            values.append(listing_type.lower()) 
+        
+        # 3. Handle 'status' if sent directly
+        status_req = request_data.get("status")
+        if status_req:
+             conditions.append("p.status = %s")
+             values.append(status_req.lower())
+
+        # 4. Range Filters
+        range_filters = {
+            "min_price": "p.price >= %s", 
+            "max_price": "p.price <= %s", 
+            "min_bedrooms": "p.bedrooms >= %s", 
+            "max_bedrooms": "p.bedrooms <= %s"
+        }
         for key, condition_str in range_filters.items():
             value = request_data.get(key)
             if value:
-                try:
-                    conditions.append(condition_str)
-                    values.append(int(value))
-                except ValueError:
-                    return jsonify(error=f"Invalid value for '{key}'. Expected an integer."), 400
+                conditions.append(condition_str)
+                values.append(int(value))
+
         sort_by = request_data.get("sort_by", "default_rank")
         sort_order = request_data.get("sort_order", "desc").lower()
-        limit = int(request_data.get("limit", 50))
+        #limit = int(request_data.get("limit", 6))
+        limit =6
         offset = int(request_data.get("offset", 0))
 
         con = getConnection()
         cursor = con.cursor(pymysql.cursors.DictCursor)
 
+        # 5. IMAGE FIX: Reverted to 'p.property_id' (String ID) for the JOIN
         query = """
             SELECT p.*, GROUP_CONCAT(i.image_url) AS images
             FROM properties p
@@ -894,10 +935,9 @@ def getProperty():
         else:
             allowed_sort_fields = ["price", "bedrooms", "created_at"]
             if sort_by not in allowed_sort_fields: sort_by = "created_at"
-            if sort_order not in ["asc", "desc"]: sort_order = "desc"
             order_clause = f"ORDER BY p.{sort_by} {sort_order}"
 
-        # --- THIS IS THE ONLY LINE THAT NEEDED TO BE CHANGED ---
+        # Group by the Primary Key (property_id_1)
         query += f" GROUP BY p.property_id_1 {order_clause} LIMIT %s OFFSET %s"
         values.extend([limit, offset])
         
@@ -910,15 +950,12 @@ def getProperty():
 
         return jsonify(count=len(properties), properties=properties), 200
 
-    except ValueError:
-        return jsonify(error="Invalid number format for a filter or pagination parameter."), 400
     except Exception as e:
         logging.error(f"Error in /getproperties: {e}", exc_info=True)
         return jsonify(error="An internal server error occurred"), 500
     finally:
         if cursor: cursor.close()
         if con: con.close()
-
    
 
 
@@ -1149,7 +1186,7 @@ def detailProperty():
         # --- Generate Google Maps Link ---
         google_maps_link = None
         lat = property_details.get('latitude')
-        lon = property_details.get('logitude') 
+        lon = property_details.get('longitude') 
 
         if lat and lon:
             try:
@@ -1593,7 +1630,7 @@ def search_properties():
             SELECT p.*, GROUP_CONCAT(i.image_url) AS images
             FROM properties p LEFT JOIN property_images i ON p.property_id = i.property_id
             {where_clause}
-            GROUP BY p.property_id_1  -- <-- CORRECTED LINE
+            GROUP BY p.property_id_1  
             ORDER BY p.is_featured DESC, p.created_at DESC
             LIMIT %s OFFSET %s
         """

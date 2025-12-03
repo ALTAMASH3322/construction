@@ -266,6 +266,8 @@ def update_property():
         property_id = data.get("property_id")
         updates = data.get("updates")
 
+        print(data)
+
         if not all([agent_id, property_id, updates]):
             return jsonify(error="agent_id, property_id, and an 'updates' object are required"), 400
         if not isinstance(updates, dict) or not updates:
@@ -290,7 +292,7 @@ def update_property():
         allowed_fields = [
             "title", "description", "price", "address", "city", "state", "country", 
             "zip_code", "property_type", "features", "bedrooms", "bathrooms", "rooms", 
-            "area_sqft", "latitude", "logitude", "status"
+            "area_sqft", "latitude", "longitude", "status"
         ]
         
         if updates: # Only run this if there are other fields to update
