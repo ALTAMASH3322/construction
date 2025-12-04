@@ -861,94 +861,130 @@ def getProperty():
     con = None
     cursor = None
     try:
+        # 1. Get Data (Handles JSON body or URL parameters)
         request_data = request.get_json(silent=True) or request.args
-        print("Incoming Data:", request_data)
+        print("Incoming Filter Data:", request_data)
 
         conditions = ["p.is_deleted = FALSE"]
         values = []
 
-        # 1. Standard Filters
-        # Removed 'status' from here to handle it manually below
-        filter_fields = {
-            "property_type": "string", 
-            "city": "string", 
-            "bedrooms": "int", 
-            "bathrooms": "int"
-        }
+        # --- 2. BUILD FILTERS (WHERE CLAUSE) ---
 
-        for field, f_type in filter_fields.items():
-            value = request_data.get(field)
-            if value:
-                try:
-                    conditions.append(f"p.{field} {'LIKE' if f_type == 'string' else '='} %s")
-                    values.append(f"%{value}%" if f_type == 'string' else int(value))
-                except ValueError:
-                    return jsonify(error=f"Invalid value for '{field}'"), 400
-
-        # 2. FILTER FIX: Map 'listing_type' (Frontend) -> 'status' (Database)
-        listing_type = request_data.get("listing_type") 
+        # Listing Type (Sale vs Rent)
+        # React sends: "SALE" or "RENT" -> Map to DB column 'status'
+        listing_type = request_data.get("listing_type")
         if listing_type:
-            # Maps "RENT" -> "rent" and checks p.status
             conditions.append("p.status = %s")
-            values.append(listing_type.lower()) 
+            values.append(listing_type.lower())
+
+        # Property Type (Apartment, Bungalow, etc.)
+        prop_type = request_data.get("property_type")
+        if prop_type and prop_type.lower() != "any":
+            conditions.append("p.property_type = %s")
+            values.append(prop_type)
+
+        # Location Filters
+        city = request_data.get("city")
+        if city:
+            conditions.append("p.city = %s")
+            values.append(city)
         
-        # 3. Handle 'status' if sent directly
-        status_req = request_data.get("status")
-        if status_req:
-             conditions.append("p.status = %s")
-             values.append(status_req.lower())
+        state = request_data.get("state")
+        if state:
+            conditions.append("p.state = %s")
+            values.append(state)
 
-        # 4. Range Filters
-        range_filters = {
-            "min_price": "p.price >= %s", 
-            "max_price": "p.price <= %s", 
-            "min_bedrooms": "p.bedrooms >= %s", 
-            "max_bedrooms": "p.bedrooms <= %s"
-        }
-        for key, condition_str in range_filters.items():
-            value = request_data.get(key)
-            if value:
-                conditions.append(condition_str)
-                values.append(int(value))
+        # Price Range
+        min_price = request_data.get("min_price")
+        if min_price:
+            conditions.append("p.price >= %s")
+            values.append(int(min_price))
 
-        sort_by = request_data.get("sort_by", "default_rank")
-        sort_order = request_data.get("sort_order", "desc").lower()
-        #limit = int(request_data.get("limit", 6))
-        limit =50
+        max_price = request_data.get("max_price")
+        if max_price:
+            conditions.append("p.price <= %s")
+            values.append(int(max_price))
+
+        # Bedrooms (>= Logic is standard for real estate)
+        bedrooms = request_data.get("bedrooms")
+        if bedrooms:
+            conditions.append("p.bedrooms >= %s")
+            values.append(int(bedrooms))
+
+        # Bathrooms
+        bathrooms = request_data.get("bathrooms")
+        if bathrooms:
+            conditions.append("p.bathrooms >= %s")
+            values.append(int(bathrooms))
+
+        # --- 3. SORTING LOGIC (ORDER BY) ---
+        # This ensures the database sorts ALL records before cutting 6 for the page.
+        sort_option = request_data.get("sort_option", "featured")
+        
+        # Default Sort
+        order_clause = "ORDER BY p.is_featured DESC, p.created_at DESC"
+
+        if sort_option == 'price_low_high':
+            order_clause = "ORDER BY p.price ASC"
+        elif sort_option == 'price_high_low':
+            order_clause = "ORDER BY p.price DESC"
+        elif sort_option == 'newest':
+            order_clause = "ORDER BY p.created_at DESC"
+        elif sort_option == 'oldest':
+            order_clause = "ORDER BY p.created_at ASC"
+        elif sort_option == 'featured':
+            order_clause = "ORDER BY p.is_featured DESC, p.created_at DESC"
+
+        # --- 4. PAGINATION PARAMETERS ---
+        # Default to 6 if not provided, exactly as Frontend expects
+        limit = int(request_data.get("limit", 6))
         offset = int(request_data.get("offset", 0))
 
         con = getConnection()
         cursor = con.cursor(pymysql.cursors.DictCursor)
 
-        # 5. IMAGE FIX: Reverted to 'p.property_id' (String ID) for the JOIN
-        query = """
+        # Build the WHERE string
+        where_clause = ""
+        if len(conditions) > 0:
+            where_clause = " WHERE " + " AND ".join(conditions)
+
+        # --- 5. QUERY 1: GET TOTAL COUNT ---
+        # We need this to know if "HasMore" is true/false in Frontend
+        count_query = f"SELECT COUNT(*) as total FROM properties p {where_clause}"
+        cursor.execute(count_query, tuple(values))
+        total_result = cursor.fetchone()
+        total_count = total_result['total'] if total_result else 0
+
+        # --- 6. QUERY 2: GET ACTUAL DATA ---
+        data_query = f"""
             SELECT p.*, GROUP_CONCAT(i.image_url) AS images
             FROM properties p
             LEFT JOIN property_images i ON p.property_id = i.property_id
+            {where_clause}
+            GROUP BY p.property_id_1 
+            {order_clause}
+            LIMIT %s OFFSET %s
         """
         
-        query += " WHERE " + " AND ".join(conditions)
+        # We need a new list of values that includes limit/offset at the end
+        data_values = values + [limit, offset]
         
-        order_clause = ""
-        if sort_by == 'default_rank':
-            order_clause = "ORDER BY p.is_featured DESC, p.created_at DESC"
-        else:
-            allowed_sort_fields = ["price", "bedrooms", "created_at"]
-            if sort_by not in allowed_sort_fields: sort_by = "created_at"
-            order_clause = f"ORDER BY p.{sort_by} {sort_order}"
-
-        # Group by the Primary Key (property_id_1)
-        query += f" GROUP BY p.property_id_1 {order_clause} LIMIT %s OFFSET %s"
-        values.extend([limit, offset])
-        
-        cursor.execute(query, tuple(values))
+        cursor.execute(data_query, tuple(data_values))
         properties = cursor.fetchall()
 
+        # --- 7. FORMAT DATA ---
         for prop in properties:
+            # Convert comma-separated string to list
             prop['images'] = prop['images'].split(',') if prop['images'] else []
+            # Ensure boolean types
             prop['is_featured'] = bool(prop['is_featured'])
 
-        return jsonify(count=len(properties), properties=properties), 200
+        # --- 8. RETURN RESPONSE ---
+        return jsonify({
+            "count": len(properties),       # Number of items in this specific page
+            "total_count": total_count,     # Total items in DB matching the filter (Important!)
+            "properties": properties
+        }), 200
 
     except Exception as e:
         logging.error(f"Error in /getproperties: {e}", exc_info=True)
