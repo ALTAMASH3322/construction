@@ -5,8 +5,11 @@ from flask import Flask, jsonify
 from flask_cors import CORS
 import pymysql
 from flask_mail import Mail
+from dotenv import load_dotenv
 
 from config import config as c
+
+load_dotenv()
 
 db_config_ = {
     "host": c.MYSQL_HOST,
@@ -28,6 +31,8 @@ def getConnection ():
         password= c.MYSQL_PASSWORD,
         cursorclass= pymysql.cursors.DictCursor
     )
+
+
 
 def create_app():
     app = Flask(__name__)

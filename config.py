@@ -26,4 +26,4 @@ class config:
     MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD') # Gets the Secret Key from .env
     
     # This is the "From" address and name that will appear in the recipient's inbox
-    MAIL_DEFAULT_SENDER = ('RealState Platform', 'basheer@etdv.org')
+    MAIL_DEFAULT_SENDER = ( 'basheer@etdv.org')

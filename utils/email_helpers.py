@@ -1,35 +1,55 @@
+import smtplib
 import logging
-from flask_mail import Message
-from app import mail  # Import the mail object from app.py
 from threading import Thread
 from flask import current_app
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
 
-def _send_async_email(app, msg):
+def _send_async_email(app, to_email, subject, html_body):
     """
-    Helper function to send email in a background thread.
-    This prevents the API from waiting for the email to be sent.
+    Sends email using standard Python smtplib (Bypassing Flask-Mail).
+    This mimics the logic of the test script that worked for you.
     """
     with app.app_context():
         try:
-            mail.send(msg)
+            # 1. Load credentials directly from the active Flask config
+            smtp_server = current_app.config.get('MAIL_SERVER')
+            smtp_port = current_app.config.get('MAIL_PORT')
+            api_key = current_app.config.get('MAIL_USERNAME')
+            secret_key = current_app.config.get('MAIL_PASSWORD')
+            sender = current_app.config.get('MAIL_DEFAULT_SENDER')
+
+            # 2. Construct the email object
+            msg = MIMEMultipart('alternative')
+            msg['Subject'] = subject
+            msg['From'] = sender
+            msg['To'] = to_email
+
+            # Attach the HTML body
+            part = MIMEText(html_body, 'html')
+            msg.attach(part)
+
+            # 3. Connect to Mailjet and Send
+            # We use the exact sequence that worked in your test script
+            server = smtplib.SMTP(smtp_server, smtp_port)
+            server.starttls()
+            server.login(api_key, secret_key)
+            server.sendmail(sender, to_email, msg.as_string())
+            server.quit()
+
+            logging.info(f"Email successfully sent to {to_email} via Mailjet")
+
         except Exception as e:
             logging.error(f"Failed to send email: {e}", exc_info=True)
 
 def send_email(to, subject, html_body):
     """
-    A helper function to send emails with pre-rendered HTML content in the background.
-    
-    :param to: The recipient's email address (e.g., 'buyer@example.com').
-    :param subject: The email subject line.
-    :param html_body: The complete HTML content of the email as a string.
-    :return: None. The email is sent in a background thread.
+    Main entry point. Starts the background thread.
     """
     app = current_app._get_current_object()
-    msg = Message(subject, recipients=[to])
-    msg.html = html_body
     
-    # Send the email in a background thread so the API call returns immediately
-    thread = Thread(target=_send_async_email, args=[app, msg])
+    # Start thread
+    thread = Thread(target=_send_async_email, args=[app, to, subject, html_body])
     thread.start()
     
-    logging.info(f"Email sending process started for subject '{subject}' to {to}")
+    logging.info(f"Async email task started for: {to}")

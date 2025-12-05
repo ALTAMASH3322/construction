@@ -254,10 +254,6 @@ def get_agent_properties():
 
 @agent_bp.route("/update_property", methods=["POST"])
 def update_property():
-    """
-    Updates a property's details and/or its images.
-    The agent can only update their own properties.
-    """
     con = None
     cursor = None
     try:
@@ -266,36 +262,43 @@ def update_property():
         property_id = data.get("property_id")
         updates = data.get("updates")
 
-        print(data)
-
         if not all([agent_id, property_id, updates]):
-            return jsonify(error="agent_id, property_id, and an 'updates' object are required"), 400
-        if not isinstance(updates, dict) or not updates:
-            return jsonify(error="'updates' must be a non-empty dictionary"), 400
+            return jsonify(error="agent_id, property_id, and 'updates' are required"), 400
 
         con = getConnection()
         cursor = con.cursor()
 
-        # --- IMAGE HANDLING LOGIC ---
+        # 1. SECURITY PRE-CHECK (Crucial Fix)
+        # Check if property exists and belongs to agent BEFORE trying to update.
+        # This prevents 404s when data hasn't changed (rowcount=0) and secures image-only updates.
+        check_query = "SELECT 1 FROM properties WHERE property_id = %s AND agent_id = %s"
+        cursor.execute(check_query, (property_id, agent_id))
+        if cursor.fetchone() is None:
+            return jsonify(error="Property not found or you do not have permission to edit it"), 404
+
+        # 2. IMAGE HANDLING
         new_images = None
         if 'images' in updates:
-            # Check if 'images' is a list
             if not isinstance(updates['images'], list):
                 return jsonify(error="'images' must be an array of strings"), 400
             new_images = updates['images']
-            # Remove 'images' from the updates dict so it's not processed in the next step
             del updates['images']
-        
-        # --- PROPERTY DETAILS UPDATE LOGIC (Your existing code) ---
-        set_parts = []
-        values = []
+
+        # 3. UPDATE PROPERTY DETAILS
+        # ADDED MISSING FIELDS based on your input data
         allowed_fields = [
             "title", "description", "price", "address", "city", "state", "country", 
             "zip_code", "property_type", "features", "bedrooms", "bathrooms", "rooms", 
-            "area_sqft", "latitude", "longitude", "status"
+            "area_sqft", "latitude", "longitude", "status",
+            # New fields added below:
+            "neighborhood", "garage_size", "land_area", 
+            "year_built", "garages", "video_url", "private_note"
         ]
         
-        if updates: # Only run this if there are other fields to update
+        set_parts = []
+        values = []
+        
+        if updates:
             for key, value in updates.items():
                 if key in allowed_fields:
                     set_parts.append(f"{key} = %s")
@@ -305,22 +308,16 @@ def update_property():
                 update_query = f"UPDATE properties SET {', '.join(set_parts)} WHERE property_id = %s AND agent_id = %s"
                 update_values = values + [property_id, agent_id]
                 cursor.execute(update_query, tuple(update_values))
+                # We removed the rowcount check here because the pre-check handled auth,
+                # and we don't want to error out just because data didn't change.
 
-                if cursor.rowcount == 0:
-                    return jsonify(error="Property not found or you do not have permission to edit it"), 404
-        
-        # --- EXECUTE IMAGE UPDATES (if images were provided) ---
+        # 4. EXECUTE IMAGE UPDATES
         if new_images is not None:
-            # Step 1: Delete all old images for this property
             cursor.execute("DELETE FROM property_images WHERE property_id = %s", (property_id,))
-            logging.info(f"Deleted old images for property_id {property_id}")
-
-            # Step 2: Insert the new images if the list is not empty
             if new_images:
                 insert_image_query = "INSERT INTO property_images (property_id, image_url) VALUES (%s, %s)"
                 image_values = [(property_id, url) for url in new_images]
                 cursor.executemany(insert_image_query, image_values)
-                logging.info(f"Inserted {len(new_images)} new images for property_id {property_id}")
 
         con.commit()
         return jsonify(message="Property updated successfully"), 200

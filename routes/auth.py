@@ -1729,16 +1729,23 @@ def search_properties():
 
 
 
-import uuid
-from datetime import datetime, timedelta
-from flask import request, jsonify, render_template_string, current_app, url_for
-from flask_mail import Message
-
 # ---------------------------------------------------------
 # ROUTE 1: REQUEST PASSWORD RESET (User enters email)
 # ---------------------------------------------------------
+import uuid
+import logging
+import pymysql
+from datetime import datetime, timedelta
+from flask import request, jsonify, current_app
+# Ensure you import your custom send_email function and DB connection
+# from your_utils_file import send_email, getConnection 
+
 @auth_bp.route("/forgot-password", methods=["POST"])
 def forgot_password():
+    """
+    Handles the 'Forgot Password' request.
+    Generates a token, saves it to DB, and sends an email using the custom send_email function.
+    """
     con = None
     cursor = None
     try:
@@ -1755,8 +1762,8 @@ def forgot_password():
         cursor.execute("SELECT user_id, name FROM users WHERE email = %s", (email,))
         user = cursor.fetchone()
 
+        # Security: Return 200 even if user not found to prevent Email Enumeration
         if not user:
-            # Security: return 200 to prevent email enumeration
             return jsonify(message="If an account exists, a reset link has been sent."), 200
 
         # 2. Generate Token and Expiry (1 Hour)
@@ -1771,26 +1778,39 @@ def forgot_password():
         con.commit()
 
         # 4. Create the Link
-        # This builds the URL dynamically based on where your API is hosted
+        # NOTE: In production, it is safer to load the domain from an environment variable 
+        # (e.g., os.getenv('FRONTEND_URL')) rather than request.host_url to prevent header injection.
+        # For now, we stick to request.host_url to ensure it works with your current setup.
         reset_link = f"{request.host_url}auth/reset-page/{token}"
 
-        # 5. Send Email via Mailjet
-        msg = Message(
-            subject="Reset Your Password",
-            recipients=[email],
-            body=f"Hello {user['name']},\n\nClick here to reset your password: {reset_link}",
-            html=f"""
+        # 5. Send Email (Using your custom send_email function)
+        subject = "Reset Your Password"
+        
+        # We construct the HTML string just like in the contact_agent function
+        html_body = f"""
+            <html>
+            <body>
                 <h3>Password Reset Request</h3>
                 <p>Hello {user['name']},</p>
                 <p>You requested to reset your password. Click the link below to set a new one:</p>
-                <p><a href='{reset_link}' style='background-color: #007bff; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;'>Reset Password</a></p>
+                <p>
+                    <a href='{reset_link}' 
+                       style='background-color: #007bff; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;'>
+                       Reset Password
+                    </a>
+                </p>
+                <p>If you did not request this, please ignore this email.</p>
                 <p>This link expires in 1 hour.</p>
-            """
+            </body>
+            </html>
+        """
+
+        # Call the custom helper function
+        send_email(
+            to=email,
+            subject=subject,
+            html_body=html_body
         )
-        
-        # Get the mail instance from the running app
-        mail = current_app.extensions.get('mail')
-        mail.send(msg)
 
         logging.info(f"Password reset email sent to {email}")
         return jsonify(message="If an account exists, a reset link has been sent."), 200
