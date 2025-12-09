@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 03, 2025 at 10:35 AM
+-- Generation Time: Dec 08, 2025 at 12:58 PM
 -- Server version: 8.0.44-0ubuntu0.24.04.1
 -- PHP Version: 8.3.6
 
@@ -112,17 +112,17 @@ INSERT INTO `agents` (`agent_id_1`, `user_id`, `agent_type`, `company_id`, `comp
 (40, 'IE6C0P', 'affiliated', 39, 'manager', '00496496', '', '', ' Malaysia', ' Sabah', ' Kota Kinabalu', 'shah alam,40160', '059565', '8194067267', 'altamash3321@gmail.com', 5, NULL, 'hey i am software developer', 'xyz', 'xyz', 'xyz', 'https://demo1.skyjaya.com/', '/uploads/18_1707132584657.jpg', 'approved', '2025-10-28 07:28:24', '2025-12-01 07:13:52', 'xyz', 5, 'AGNQNTVL', 5.00, 1, 0, 304),
 (41, '4UNG3R', 'independent', NULL, NULL, NULL, NULL, NULL, 'Malaysia', 'uttar pradesh', NULL, 'aligarh', NULL, '9058101306', 'ankit@gmail.com', 5, 'backend developer', 'ban gaya kya', 'xyz', 'xyz', 'xyz', 'https://demo1.skyjaya.com/', '/uploads/44_1707132584657.jpg', 'approved', '2025-11-18 07:15:31', '2025-11-26 10:59:25', NULL, 5, 'AGNKAG67', 0.00, 0, 2, 0),
 (42, '579F1P', 'affiliated', 40, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Himanshu@gmail.com', 2, 'Hr', 'hey ye bhi ho gaya', 'https://demo1.skyjaya.com/', 'https://demo1.skyjaya.com/', 'https://demo1.skyjaya.com/', 'https://demo1.skyjaya.com/', '/uploads/45_1707132584657.jpg', 'approved', '2025-11-18 07:53:50', '2025-12-03 08:48:24', '', 5, 'AGNMCKJQ', 0.00, 0, 2, 0),
-(43, 'RI1DGY', 'independent', NULL, NULL, NULL, NULL, NULL, 'Malaysia', 'indian', NULL, 'shah alam,40160', NULL, '9058101306', 'rekha@gmail.com', 2, ' frontend', 'dssdfdsdsd', 'https://skyjaya.com/', 'https://skyjaya.com/', 'https://skyjaya.com/', 'https://demo1.skyjaya.com/', '/uploads/48_1707132584657.jpg', 'rejected', '2025-11-19 12:24:36', '2025-12-03 08:48:27', NULL, 5, 'AGNXDUTB', 0.00, 0, 2, 0),
+(43, 'RI1DGY', 'independent', NULL, NULL, NULL, NULL, NULL, 'Malaysia', 'indian', NULL, 'shah alam,40160', NULL, '9058101306', 'rekha@gmail.com', 2, ' frontend', 'dssdfdsdsd', 'https://skyjaya.com/', 'https://skyjaya.com/', 'https://skyjaya.com/', 'https://demo1.skyjaya.com/', '/uploads/48_1707132584657.jpg', 'approved', '2025-11-19 12:24:36', '2025-12-05 09:37:15', NULL, 5, 'AGNXDUTB', 0.00, 0, 2, 0),
 (44, 'ZRMKN9', 'affiliated', 41, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'tabish@gmail.com', 2, ' frontend', 'gfgfg', 'https://skyjaya.com/', 'https://skyjaya.com/', 'https://skyjaya.com/', 'https://demo1.skyjaya.com/', '/uploads/49_1707132584657.jpg', 'pending', '2025-11-19 12:30:09', '2025-11-26 08:28:32', 'https://skyjaya.com/', 5, 'AGNCFR9S', 0.00, 0, 2, 0),
 (48, '96S4X2', 'independent', NULL, NULL, NULL, NULL, NULL, 'Malaysia', 'Selangor', NULL, 'Shah Alam', NULL, '9915857690', 'basheer.mca@gmail.com', 5, 'Residentials', 'fadsf asfasfa asfddsdfas asfasdfa asdfasdfas asfddasf', '', '', '', 'http://www.abc.com', NULL, 'approved', '2025-11-20 16:08:03', '2025-11-26 16:29:17', NULL, 5, 'AGNZV75V', 0.00, 0, 0, 25),
-(49, '1US551', 'affiliated', 45, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'basheer.atxlearning@gmail.com', 5, 'Residentials & Commercials', 'adsf asdfa sdfas asdfasfas adfssfsaf asfd', '', '', '', '', '/uploads/61_Chatbot_img.png', 'approved', '2025-11-20 16:24:36', '2025-12-01 11:57:21', '', 5, 'AGNTXYM2', 5.00, 1, 1, 0),
+(49, '1US551', 'affiliated', 45, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'basheer.atxlearning@gmail.com', 5, 'Residentials & Commercials', 'adsf asdfa sdfas asdfasfas adfssfsaf asfd', '', '', '', '', '/uploads/61_Chatbot_img.png', 'approved', '2025-11-20 16:24:36', '2025-12-03 13:02:31', '', 5, 'AGNTXYM2', 4.50, 2, 1, 0),
 (50, 'S8L0YG', 'affiliated', 46, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'naim@gmail.com', 2, ' frontend', 'hey ', 'https://skyjaya.com/', 'https://skyjaya.com/', 'https://skyjaya.com/', 'https://demo1.skyjaya.com/', '/uploads/62_1707132584657.jpg', 'pending', '2025-11-21 09:25:42', '2025-11-26 08:28:32', 'https://skyjaya.com/', 5, 'AGNEGTEC', 0.00, 0, 2, 0),
 (51, 'B1YFZC', 'independent', NULL, NULL, NULL, 'rdshesh', 'tyheh', 'India', 'Jharkhand', NULL, 'jamshedpur', '831004', '07257830471', 'md.altamash@gmail.com', 5, 'serheshs', 'WREGHARHARSH', 'https://www.perplexity.ai/', 'https://www.perplexity.ai/', 'https://www.perplexity.ai/', 'https://www.perplexity.ai/', NULL, 'approved', '2025-11-21 11:28:49', '2025-12-03 06:59:20', 'https://www.perplexity.ai/', 5, 'AGN9IIPO', 3.20, 5, 1, 25),
 (52, 'OZN0SL', 'affiliated', 42, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'saggy@gmail.com', 5, 'serheshs', 'wrhgarseharshaerbh', 'https://www.perplexity.ai/', 'https://www.perplexity.ai/', 'https://www.perplexity.ai/', 'https://www.perplexity.ai/', NULL, 'approved', '2025-11-21 11:38:27', '2025-11-26 08:28:32', 'https://www.perplexity.ai/', 5, 'AGNTOREG', 0.00, 0, 2, 100),
 (53, '1GWT5Y', 'independent', NULL, NULL, NULL, NULL, NULL, 'Malaysia', 'kualalumpur', NULL, 'kuala lumpur', NULL, '7257830471', 'farmaaaan@gmail.com', 5, 'commercial', 'fajfiyaeca iugauiba viba', '', '', '', '', NULL, 'approved', '2025-11-21 12:12:55', '2025-12-01 11:40:48', NULL, 5, 'AGNHIVLZ', 5.00, 1, 1, 100),
 (54, '1ZJGEE', 'independent', NULL, NULL, NULL, NULL, NULL, 'Malaysia', 'Kedah', NULL, 'Kulim', NULL, '9058101306', 'sagar@gmail.com', 5, ' frontend', 'gfyfyu', 'https://skyjaya.com/', 'https://skyjaya.com/', 'https://skyjaya.com/', 'https://demo1.skyjaya.com/', NULL, 'pending', '2025-11-25 04:27:34', '2025-11-26 08:28:32', NULL, 5, 'AGNN1ZJH', 0.00, 0, 2, 0),
-(55, 'KKVCX8', 'affiliated', 39, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'ramu@gmail.com', 2, ' frontend', 'hhhh', 'https://skyjaya.com/', 'https://skyjaya.com/', 'https://skyjaya.com/', 'https://demo1.skyjaya.com/', '/uploads/72_1707132584657.jpg', 'rejected', '2025-11-25 04:31:17', '2025-11-26 08:28:32', 'https://skyjaya.com/', 5, 'AGNMETMF', 0.00, 0, 2, 0),
-(56, '6K020N', 'independent', NULL, NULL, NULL, NULL, NULL, 'Malaysia', 'Kelantan', NULL, 'Pasir Mas', NULL, '9058101306', 'farman.skyjaya@gmail.com', 5, 'backend developer', 'hhh', 'https://skyjaya.com/', 'https://skyjaya.com/', 'https://skyjaya.com/', 'https://demo1.skyjaya.com/', '/uploads/19_1707132584657.jpg', 'rejected', '2025-11-25 04:49:29', '2025-11-30 16:31:27', NULL, 5, 'AGNXPDKG', 0.00, 0, 2, 0),
+(55, 'KKVCX8', 'affiliated', 39, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'ramu@gmail.com', 2, ' frontend', 'hhhh', 'https://skyjaya.com/', 'https://skyjaya.com/', 'https://skyjaya.com/', 'https://demo1.skyjaya.com/', '/uploads/72_1707132584657.jpg', 'approved', '2025-11-25 04:31:17', '2025-12-05 09:37:56', 'https://skyjaya.com/', 5, 'AGNMETMF', 0.00, 0, 2, 0),
+(56, '6K020N', 'affiliated', 46, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'farman@gmail.com', 2, ' frontend', 'sss', 'https://skyjaya.com/', 'https://skyjaya.com/', 'https://skyjaya.com/', 'https://demo1.skyjaya.com/', '/uploads/6K020N_Screenshot_2025-11-19_144644.png', 'rejected', '2025-11-25 04:49:29', '2025-12-08 10:17:34', NULL, 5, 'AGNXPDKG', 0.00, 0, 2, 0),
 (59, 'LT2NPD', 'independent', NULL, NULL, NULL, '1112254599', 'government of India', 'Malaysia', 'Labuan', NULL, 'Victoria', '87000', '9058101306', 'farman@testgmail.com', 5, 'Hr', 'aaaa', 'https://skyjaya.com/', 'https://skyjaya.com/', 'https://skyjaya.com/', 'https://demo1.skyjaya.com/', NULL, 'pending', '2025-11-26 10:57:36', '2025-11-26 10:58:30', 'https://skyjaya.com/', 5, 'DXADP48I', 0.00, 0, 3, 0),
 (60, 'BTVM7V', 'independent', NULL, NULL, NULL, '1112254599', 'government of India', 'Malaysia', 'Kuala Lumpur', NULL, 'Cheras', '56100', '9058101306', 'home@gmail.com', 5, 'Hr', 'sssss', 'https://skyjaya.com/', 'https://skyjaya.com/', 'https://skyjaya.com/', 'https://demo1.skyjaya.com/', '/uploads/BTVM7V_Pixel-9-render-leak--1024x866.jpg', 'pending', '2025-11-26 12:15:13', '2025-11-26 12:15:13', 'https://skyjaya.com/', 5, 'AN230I8E', 0.00, 0, 3, 0),
 (61, 'V4ORGS', 'affiliated', 41, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'dream@gmail.com', 2, ' frontend', 'aaa', 'https://skyjaya.com/', 'https://skyjaya.com/', 'https://skyjaya.com/', 'https://demo1.skyjaya.com/', NULL, 'pending', '2025-11-26 12:17:07', '2025-11-26 12:17:07', NULL, 5, 'RLEZG1I8', 0.00, 0, 3, 0),
@@ -130,10 +130,17 @@ INSERT INTO `agents` (`agent_id_1`, `user_id`, `agent_type`, `company_id`, `comp
 (63, '8BMV88', 'independent', NULL, NULL, NULL, '1112254599', 'government of India', 'Malaysia', 'Kedah', NULL, 'Langkawi', '07000', '9058101306', 'tiger@gmail.com', 2, 'backend developer', 'xxxx', 'https://skyjaya.com/', 'https://skyjaya.com/', 'https://skyjaya.com/', 'https://demo1.skyjaya.com/', NULL, 'pending', '2025-12-01 10:24:08', '2025-12-01 10:24:08', 'https://skyjaya.com/', 5, '71DH0CDI', 0.00, 0, 3, 0),
 (64, 'XOCDMO', 'affiliated', 46, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'jim@gmail.com', 5, 'Hr', 'gggg', 'https://skyjaya.com/', 'https://skyjaya.com/', 'https://skyjaya.com/', 'https://demo1.skyjaya.com/', '/uploads/XOCDMO_images__1_-removebg-preview.png', 'pending', '2025-12-01 10:26:00', '2025-12-01 10:26:00', NULL, 5, 'CYG7E1RD', 0.00, 0, 3, 0),
 (65, 'KVF6CY', 'independent', NULL, NULL, NULL, '1112254599', 'government of India', 'Malaysia', 'Negeri Sembilan', NULL, 'Nilai', '71800', '9058101306', 'riya@gmail.com', 5, 'Hr', 'ffff', 'https://skyjaya.com/', 'https://skyjaya.com/', 'https://skyjaya.com/', 'https://demo1.skyjaya.com/', NULL, 'pending', '2025-12-01 11:59:20', '2025-12-01 11:59:20', 'https://skyjaya.com/', 5, 'ESFI1CDJ', 0.00, 0, 3, 0),
-(66, 'U9EZG3', 'independent', NULL, NULL, NULL, '1112254599', 'government of India', 'Malaysia', 'Pahang', NULL, 'Lipis', '27200', '9058101306', 'sultana@gmail.com', 2, 'Hr', 'hii', 'https://skyjaya.com/', 'https://skyjaya.com/', 'https://skyjaya.com/', 'https://demo1.skyjaya.com/', '/uploads/U9EZG3_hrd2-hero-c93JsfNI-removebg-preview.png', 'pending', '2025-12-02 07:39:29', '2025-12-02 07:39:29', 'https://skyjaya.com/', 5, 'XRR7GHPT', 0.00, 0, 3, 0),
+(66, 'U9EZG3', 'independent', NULL, NULL, NULL, '1112254599', 'government of India', 'Malaysia', 'Pahang', NULL, 'Lipis', '27200', '9058101306', 'sultana@gmail.com', 2, 'Hr', 'hii', 'https://skyjaya.com/', 'https://skyjaya.com/', 'https://skyjaya.com/', 'https://demo1.skyjaya.com/', '/uploads/U9EZG3_hrd2-hero-c93JsfNI-removebg-preview.png', 'rejected', '2025-12-02 07:39:29', '2025-12-05 12:11:24', 'https://skyjaya.com/', 5, 'XRR7GHPT', 0.00, 0, 3, 0),
 (67, 'R2OW73', 'affiliated', 42, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'md.altamash7257@gmail.com', 5, 'serheshs', 'qwegweg', 'https://www.perplexity.ai/', 'https://www.perplexity.ai/', 'https://www.perplexity.ai/', 'https://www.perplexity.ai/', '/uploads/R2OW73_Generated_Image_October_08_2025_-_5_38PM_4.png', 'pending', '2025-12-03 07:52:34', '2025-12-03 07:54:42', NULL, 5, 'HFDCA5NG', 0.00, 0, 3, 0),
-(68, 'WGBYKO', 'independent', NULL, NULL, NULL, 'rfbdf6561', 'dvsvb', 'Malaysia', 'Sabah', NULL, 'Kota Kinabalu', '88000', '07257830471', 'test1@gmail.com', 5, 'serheshs', 'rseabhrbh ev hetherghe he', 'https://www.perplexity.ai/', 'https://www.perplexity.ai/', 'https://www.perplexity.ai/', 'https://www.perplexity.ai/', NULL, 'approved', '2025-12-03 08:51:41', '2025-12-03 09:06:39', 'https://www.perplexity.ai/', 5, 'WDV1A258', 0.00, 0, 1, 10),
-(69, 'YFY7XQ', 'affiliated', 42, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'test2@gmail.com', 5, 'serheshs', 'wghawerg', 'https://www.perplexity.ai/', 'https://www.perplexity.ai/', 'https://www.perplexity.ai/', 'https://www.perplexity.ai/', '/uploads/YFY7XQ_Generated_Image_October_09_2025_-_2_30PM.png', 'approved', '2025-12-03 08:59:18', '2025-12-03 09:48:17', NULL, 5, '984OQDDG', 2.00, 1, 1, 0);
+(68, 'WGBYKO', 'independent', NULL, NULL, NULL, 'rfbdf6561', 'dvsvb', 'Malaysia', 'Sabah', NULL, 'Kota Kinabalu', '88000', '07257830471', 'test1@gmail.com', 5, 'serheshs', 'rseabhrbh ev hetherghe he', 'https://www.perplexity.ai/', 'https://www.perplexity.ai/', 'https://www.perplexity.ai/', 'https://www.perplexity.ai/', NULL, 'approved', '2025-12-03 08:51:41', '2025-12-04 09:47:20', 'https://www.perplexity.ai/', 5, 'WDV1A258', 0.00, 0, 0, 7),
+(69, 'YFY7XQ', 'affiliated', 42, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'test2@gmail.com', 5, 'serheshs', 'wghawerg', 'https://www.perplexity.ai/', 'https://www.perplexity.ai/', 'https://www.perplexity.ai/', 'https://www.perplexity.ai/', '/uploads/YFY7XQ_Generated_Image_October_09_2025_-_2_30PM.png', 'approved', '2025-12-03 08:59:18', '2025-12-03 09:48:17', NULL, 5, '984OQDDG', 2.00, 1, 1, 0),
+(72, 'Y815EA', 'independent', NULL, NULL, NULL, 'rfbdf6561', 'dvsvb', 'Malaysia', 'Sarawak', NULL, 'Kuching', '93000', '07257830471', 'te1@gmail.com', 5, 'serheshs', 'ehjaerjhnaerherh ', 'https://www.perplexity.ai/', 'https://www.perplexity.ai/', 'https://www.perplexity.ai/', 'https://www.perplexity.ai/', '/uploads/Y815EA_image_1.png', 'pending', '2025-12-08 07:05:12', '2025-12-08 07:05:12', 'https://www.perplexity.ai/', 5, 'VF9QMMYL', 0.00, 0, 2, 0),
+(73, '3R8OBC', 'affiliated', 42, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'te3@gmail.com', 5, 'serheshs', 'fygouofd', 'https://www.perplexity.ai/', 'https://www.perplexity.ai/', 'https://www.perplexity.ai/', 'https://www.perplexity.ai/', '/uploads/3R8OBC_image_2.png', 'pending', '2025-12-08 07:31:49', '2025-12-08 07:31:49', NULL, 5, '5IT8HFFK', 0.00, 0, 2, 0),
+(74, 'QSEEK9', 'independent', NULL, NULL, NULL, '1112254599', 'government of India', 'Malaysia', 'Melaka', NULL, 'Melaka City', '75000', '9058101306', 'chacha@gmail.com', 2, ' frontend', 'jjj', 'https://skyjaya.com/', 'https://skyjaya.com/', 'https://skyjaya.com/', 'https://demo1.skyjaya.com/', NULL, 'pending', '2025-12-08 07:36:43', '2025-12-08 07:36:43', 'https://skyjaya.com/', 5, '3NPB6OKG', 0.00, 0, 2, 0),
+(75, '5E9U5Z', 'affiliated', 40, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'chaudhary@gmail.com', 2, ' frontend', 'hhh', 'https://skyjaya.com/', 'https://skyjaya.com/', 'https://skyjaya.com/', 'https://demo1.skyjaya.com/', '/uploads/5E9U5Z_Screenshot_2025-10-01_130209.png', 'pending', '2025-12-08 07:38:32', '2025-12-08 07:38:32', NULL, 5, '884QYCMR', 0.00, 0, 2, 0),
+(76, 'OA3D9Y', 'affiliated', 42, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'md.altamash7257@gmail.com', 5, 'serheshs', '4twergsrags', 'https://www.perplexity.ai/', 'https://www.perplexity.ai/', 'https://www.perplexity.ai/', 'https://www.perplexity.ai/', '/uploads/OA3D9Y_Generated_Image_October_09_2025_-_2_30PM.png', 'pending', '2025-12-08 07:41:01', '2025-12-08 08:30:24', NULL, 5, 'WT4UM981', 0.00, 0, 2, 0),
+(77, 'JZ0TTD', 'affiliated', 39, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'raj@gmail.com', 5, ' frontend', 'ddd', 'https://skyjaya.com/', 'https://skyjaya.com/', 'https://skyjaya.com/', 'https://demo1.skyjaya.com/', '/uploads/JZ0TTD_Screenshot_2025-09-15_095748.png', 'pending', '2025-12-08 10:27:23', '2025-12-08 10:27:23', NULL, 5, 'YV89AFY8', 0.00, 0, 2, 0),
+(78, 'MG7CV1', 'affiliated', 41, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'glass@gmail.com', 2, 'backend developer', '', '', '', '', '', NULL, 'pending', '2025-12-08 11:39:11', '2025-12-08 11:39:11', NULL, 5, 'I76Z5HPU', 0.00, 0, 2, 0);
 
 --
 -- Triggers `agents`
@@ -142,6 +149,47 @@ DELIMITER $$
 CREATE TRIGGER `before_agent_insert` BEFORE INSERT ON `agents` FOR EACH ROW BEGIN
     SET NEW.agent_id = generate_unique_agent_id()$$
 DELIMITER ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `agent_documents`
+--
+
+CREATE TABLE `agent_documents` (
+  `document_id` int NOT NULL,
+  `agent_id` char(8) NOT NULL,
+  `file_name` varchar(255) NOT NULL,
+  `file_url` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `agent_documents`
+--
+
+INSERT INTO `agent_documents` (`document_id`, `agent_id`, `file_name`, `file_url`, `created_at`) VALUES
+(3, 'VF9QMMYL', 'Government ID', '/uploads/VF9QMMYL_cbcbfce5_Invoice_V2AZWBHD3Y_2.pdf', '2025-12-08 07:05:13'),
+(4, 'VF9QMMYL', 'Real Estate Agent License', '/uploads/VF9QMMYL_a693abe0_Invoice_CFWYV6WSZC.pdf', '2025-12-08 07:05:13'),
+(5, 'VF9QMMYL', 'Address Proof', '/uploads/VF9QMMYL_ea175644_Invoice_V2AZWBHD3Y_1.pdf', '2025-12-08 07:05:13'),
+(6, '5IT8HFFK', 'Government ID', '/uploads/5IT8HFFK_3d9e7977_Invoice_V2AZWBHD3Y_2.pdf', '2025-12-08 07:31:49'),
+(7, '5IT8HFFK', 'Business Registration Certificate', '/uploads/5IT8HFFK_6a46ba6b_Invoice_V2AZWBHD3Y_2.pdf', '2025-12-08 07:31:50'),
+(8, '5IT8HFFK', 'Agency License', '/uploads/5IT8HFFK_080656a7_Invoice_CFWYV6WSZC.pdf', '2025-12-08 07:31:50'),
+(9, '5IT8HFFK', 'Tax ID / PAN', '/uploads/5IT8HFFK_1002369a_Invoice_V2AZWBHD3Y_1.pdf', '2025-12-08 07:31:50'),
+(10, '5IT8HFFK', 'Office Address Proof', '/uploads/5IT8HFFK_b77d4a16_Invoice_V2AZWBHD3Y_1.pdf', '2025-12-08 07:31:50'),
+(11, '5IT8HFFK', 'Authorized Person ID', '/uploads/5IT8HFFK_72b6c41d_Form_8_English.pdf', '2025-12-08 07:31:51'),
+(12, 'WT4UM981', 'Government ID', '/uploads/WT4UM981_e1234730_Invoice_CFWYV6WSZC.pdf', '2025-12-08 07:41:02'),
+(13, 'AGNXPDKG', 'Government ID', '/uploads/AGNXPDKG_e9ee1dfe_Screenshot_2025-09-16_152123.png', '2025-12-08 09:50:05'),
+(14, 'AGNXPDKG', 'Real Estate Agent License', '/uploads/AGNXPDKG_acb344ca_Screenshot_2025-09-17_095625.png', '2025-12-08 09:50:05'),
+(15, 'AGNXPDKG', 'Agency License', '/uploads/AGNXPDKG_ddb7e1df_Screenshot_2025-09-18_150915.png', '2025-12-08 09:50:05'),
+(16, 'AGNXPDKG', 'Authorized Person ID', '/uploads/AGNXPDKG_c87cb260_Screenshot_2025-09-25_124950.png', '2025-12-08 09:50:05'),
+(17, 'AGNXPDKG', 'Government ID', '/uploads/AGNXPDKG_113b623f_Screenshot_2025-09-16_154934.png', '2025-12-08 10:17:34'),
+(18, 'AGNXPDKG', 'Real Estate Agent License', '/uploads/AGNXPDKG_59543d7e_Screenshot_2025-09-17_095625.png', '2025-12-08 10:17:34'),
+(19, 'AGNXPDKG', 'Personal Address Proof', '/uploads/AGNXPDKG_0ce4b81b_Screenshot_2025-09-16_154934.png', '2025-12-08 10:17:34'),
+(20, 'AGNXPDKG', 'Authorized Person ID', '/uploads/AGNXPDKG_5c2f26e6_Screenshot_2025-09-17_125031.png', '2025-12-08 10:17:34'),
+(21, 'YV89AFY8', 'Government ID', '/uploads/YV89AFY8_56a9867e_Screenshot_2025-09-11_124854.png', '2025-12-08 10:27:23'),
+(22, 'YV89AFY8', 'Real Estate Agent License', '/uploads/YV89AFY8_3f5b9c48_Screenshot_2025-09-16_154934.png', '2025-12-08 10:27:23'),
+(23, 'YV89AFY8', 'Office Address Proof', '/uploads/YV89AFY8_c2fdf19e_Screenshot_2025-09-17_125031.png', '2025-12-08 10:27:23');
 
 -- --------------------------------------------------------
 
@@ -179,14 +227,14 @@ INSERT INTO `appointments` (`appointment_id`, `property_id`, `agent_id`, `user_i
 (48, 'NKJT5Z6NG1', 'AGNBYIE8', 'A0TTD6', '2025-11-30', '20:00:00', 'confirmed', 'hi I want to see your apartment', 'please visit on this date and time', '2025-11-21 12:00:53', '2025-11-26 09:17:37'),
 (49, 'PVXPJAJJRY', 'AGNQNTVL', 'IE6C0P', '2025-12-25', '19:50:00', 'confirmed', 'fadsf afasf asfd', 'ebhwaerhb', '2025-11-24 16:43:19', '2025-12-03 10:15:23'),
 (50, 'YPDI4TFFLE', 'AGNZV75V', '2TK4LE', '2025-12-01', '15:00:00', 'confirmed', 'fdsf ads asfa sdfasf afsdadsdf afsasf asfas asf fasdfadsf', 'fadsf asdfasf as asdfasf asdfasdf asdfadsdf a', '2025-11-26 16:17:06', '2025-11-26 17:05:30'),
-(51, 'W3HTC0SK99', 'AGNTXYM2', '2TK4LE', '2025-11-29', NULL, 'pending', 'dasfa dfasdf afs asdfsadf sdfdsfadsf asdfas', NULL, '2025-11-26 16:22:40', '2025-11-26 16:22:40'),
 (52, '5PTLBKIM97', 'AGN9IIPO', '6K020N', '2025-12-20', NULL, 'pending', 'jjj', NULL, '2025-12-01 12:18:21', '2025-12-01 12:18:21'),
 (53, '5PTLBKIM97', 'AGN9IIPO', 'I1FQ57', '2025-12-18', NULL, 'pending', 'rgseyjd', NULL, '2025-12-02 05:26:37', '2025-12-02 05:26:37'),
 (54, '9BG4Z7VGEB', 'AGNBYIE8', 'I1FQ57', '2025-12-26', NULL, 'pending', 'rnertnre', NULL, '2025-12-02 06:35:50', '2025-12-02 06:35:50'),
 (55, 'WBO6KYV76Z', 'AGNQNTVL', 'I1FQ57', '2025-12-17', NULL, 'pending', 'rtjwtj', NULL, '2025-12-02 06:56:17', '2025-12-02 06:56:17'),
-(57, '5PTLBKIM97', 'AGN9IIPO', 'R2OW73', '2025-12-19', NULL, 'pending', 'uylfryul', NULL, '2025-12-03 07:20:41', '2025-12-03 07:20:41'),
 (58, 'H78899BJE3', 'WDV1A258', '6K020N', '2025-12-18', '18:03:00', 'confirmed', 'hi bro', 'wowww very dangerous', '2025-12-03 09:12:08', '2025-12-03 09:30:10'),
-(59, 'C1YCLODH3P', '984OQDDG', '6K020N', '2025-12-04', NULL, 'cancelled', 'dilwa de bhai', 'paise lagenge', '2025-12-03 09:47:28', '2025-12-03 09:49:22');
+(59, 'C1YCLODH3P', '984OQDDG', '6K020N', '2025-12-04', NULL, 'cancelled', 'dilwa de bhai', 'paise lagenge', '2025-12-03 09:47:28', '2025-12-03 09:49:22'),
+(60, '5YYN5GMG66', 'AGNBYIE8', 'R2OW73', '2025-12-26', '05:28:00', 'confirmed', 'sxv sdvd', 'ok', '2025-12-04 10:56:54', '2025-12-04 10:57:30'),
+(61, 'ZICV2EKDUV', 'WDV1A258', 'OA3D9Y', '2025-12-17', NULL, 'pending', 'fdjfy', NULL, '2025-12-08 11:22:29', '2025-12-08 11:22:29');
 
 -- --------------------------------------------------------
 
@@ -308,7 +356,8 @@ INSERT INTO `chat_messages` (`message_id`, `conversation_id`, `sender_user_id`, 
 (83, 17, '6K020N', 'Hi, I\'m interested in your property: \"vfg\". Can you share more details?', '2025-12-03 09:11:00', NULL),
 (84, 17, 'WGBYKO', 'YES WHAT IS YOUR BUDGET??', '2025-12-03 09:11:25', NULL),
 (85, 17, '6K020N', '100', '2025-12-03 09:11:43', NULL),
-(86, 18, '6K020N', 'Hi, I\'m interested in your property: \"aerhrae\". Can you share more details?', '2025-12-03 09:47:32', NULL);
+(86, 18, '6K020N', 'Hi, I\'m interested in your property: \"aerhrae\". Can you share more details?', '2025-12-03 09:47:32', NULL),
+(87, 19, '96S4X2', 'Hi, I\'m interested in your property: \"3BHK Flat RM1500 for Rent\". Can you share more details?', '2025-12-03 12:58:23', NULL);
 
 -- --------------------------------------------------------
 
@@ -369,13 +418,13 @@ CREATE TABLE `companies` (
 --
 
 INSERT INTO `companies` (`company_id`, `company_name`, `company_type`, `license_number`, `country`, `state`, `city`, `company_address`, `postal_code`, `contact_person_name`, `contact_person_role`, `phone_number`, `email`, `website`, `description`, `years_in_business`, `facebook`, `instagram`, `linkedin`, `created_at`, `x_account`) VALUES
-(39, 'wani.ai', 'Real Estate Brokerage', '00496496', 'Malaysia', 'Selangor', 'Petaling Jaya', '725 NE 166th St, Miami, FL 33162, USA', '46000', 'ramu', NULL, '+60135567890', 'ramu@gmail.com', 'www.wani.ai', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', 3, 'https://skyjaya.com/', 'https://skyjaya.com/', NULL, '2025-10-28 07:27:17', 'https://skyjaya.com/'),
-(40, 'Waniya Enterprises', 'Developer / Builder', '00465854', 'Malaysia', 'Selangor', 'Shah Alam', 'shah alam', '40000', '', NULL, '+60123456789', 'Himanshu@gmail.com', 'www.skyjaya.com', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', 5, 'xyz', 'xyz', NULL, '2025-11-18 07:53:03', 'xyz'),
-(41, 'skyjaya', 'Real Estate Brokerage', '00496496', 'Malaysia', 'Negeri Sembilan', 'Port Dickson', '725 NE 166th St, Miami, FL 33162, USA', '71000', 'tabish', NULL, '+60123456789', 'dream@gmail.com', 'www.skyjaya.com', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', 5, 'https://skyjaya.com/', 'https://skyjaya.com/', NULL, '2025-11-19 12:29:46', 'https://skyjaya.com/'),
-(42, 'kjsrtj', 'Real Estate Agency', 'jstjsrt', 'Malaysia', 'Selangor', 'Ampang', 'telco kharangajhar', '68000', 'rtghaeh', NULL, '+60123456595', 'test2@gmail.com', 'https://www.perplexity.ai/', 'https://www.perplexity.ai/', 5, 'https://www.perplexity.ai/', 'https://www.perplexity.ai/', NULL, '2025-11-20 09:07:33', 'https://www.perplexity.ai/'),
+(39, 'wani.ai', 'Real Estate Brokerage', NULL, 'Malaysia', 'Kuala Lumpur', 'Cheras', '725 NE 166th St, Miami, FL 33162, USA', '56100', 'tabish', NULL, NULL, 'raj@gmail.com', 'www.skyjaya.com', 'fyfh', 5, 'https://skyjaya.com/', 'https://skyjaya.com/', NULL, '2025-10-28 07:27:17', 'https://skyjaya.com/'),
+(40, 'Waniya Enterprises', 'Real Estate Agency', '00496496', 'Malaysia', 'Penang', 'Bayan Lepas', '725 NE 166th St, Miami, FL 33162, USA', '11900', 'tabish', NULL, NULL, 'farman.skyjaya@gmail.com', 'www.skyjaya.com', 'gggg', 5, '', 'https://skyjaya.com/', NULL, '2025-11-18 07:53:03', 'https://skyjaya.com/'),
+(41, 'skyjaya', 'Real Estate Agency', NULL, 'Malaysia', 'Perak', 'Taiping', '725 NE 166th St, Miami, FL 33162, USA', '34000', 'tabish', NULL, NULL, 'glass@gmail.com', '', 'aa', 3, '', '', NULL, '2025-11-19 12:29:46', ''),
+(42, 'kjsrtj', 'Real Estate Agency', '', 'Malaysia', 'Putrajaya', 'Putrajaya', 'telco kharangajhar', '62000', 'rtghaeh', NULL, '+60123456595', 'md.altamash7257@gmail.com', 'https://www.perplexity.ai/', 'https://www.perplexity.ai/', 5, 'https://www.perplexity.ai/', 'https://www.perplexity.ai/', NULL, '2025-11-20 09:07:33', 'https://www.perplexity.ai/'),
 (44, 'ATX', 'Property Management Company', 'hrhASZH', 'Malaysia', 'Perlis', 'Kangar', 'reherhd', '01000', 'edrhaerh', NULL, '+60123456789', 'alta@gmail.com', 'https://www.perplexity.ai/', 'raehaerh', 5, 'https://www.perplexity.ai/', 'https://www.perplexity.ai/', NULL, '2025-11-20 09:51:19', 'https://www.perplexity.ai/'),
 (45, 'XYZ Pvt. Ltd.', 'Real Estate Agency', 'XYZ054782', 'Malaysia', 'Labuan', 'Victoria', 'Golden Street', '87000', 'Robin', NULL, '+60123440789', 'basheer.atxlearning@gmail.com', '', '', 3, '', '', NULL, '2025-11-20 16:23:04', ''),
-(46, 'as web provider', 'Property Management Company', '00496496', 'Malaysia', 'Pahang', 'Cameron Highlands', 'shah alam,40160', '39000', 'tabish', NULL, '+60123456789', 'jim@gmail.com', 'www.skyjaya.com', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', 5, 'https://skyjaya.com/', 'https://skyjaya.com/', NULL, '2025-11-21 09:25:07', 'https://skyjaya.com/');
+(46, 'as web provider', 'Real Estate Brokerage', '00496496', 'Malaysia', 'Perak', 'Teluk Intan', '725 NE 166th St, Miami, FL 33162, USA', '36000', 'tabish', NULL, NULL, 'farman@testgmail.com', 'www.skyjaya.com', 'dddd', 3, 'https://skyjaya.com/', 'https://skyjaya.com/', NULL, '2025-11-21 09:25:07', 'https://skyjaya.com/');
 
 -- --------------------------------------------------------
 
@@ -411,7 +460,8 @@ INSERT INTO `conversations` (`conversation_id`, `user_id`, `agent_id`, `created_
 (15, 'GR9OA8', 'AGNBYIE8', '2025-12-02 06:54:27', '2025-12-02 06:54:27'),
 (16, 'R2OW73', 'AGN9IIPO', '2025-12-03 07:00:33', '2025-12-03 07:00:33'),
 (17, '6K020N', 'WDV1A258', '2025-12-03 09:11:00', '2025-12-03 09:11:00'),
-(18, '6K020N', '984OQDDG', '2025-12-03 09:47:32', '2025-12-03 09:47:32');
+(18, '6K020N', '984OQDDG', '2025-12-03 09:47:32', '2025-12-03 09:47:32'),
+(19, '96S4X2', 'AGNQNTVL', '2025-12-03 12:58:23', '2025-12-03 12:58:23');
 
 -- --------------------------------------------------------
 
@@ -471,8 +521,9 @@ INSERT INTO `favorites` (`favorite_id`, `user_id`, `property_id`, `created_at`) 
 (255, '6K020N', 'V5S8JPMRMJ', '2025-12-01 08:43:23'),
 (256, '6K020N', '5PTLBKIM97', '2025-12-01 08:43:24'),
 (263, 'R2OW73', '5PTLBKIM97', '2025-12-03 07:02:03'),
-(264, 'R2OW73', '5YYN5GMG66', '2025-12-03 07:02:05'),
-(267, 'R2OW73', '9V9IHL9985', '2025-12-03 07:03:09');
+(267, 'R2OW73', '9V9IHL9985', '2025-12-03 07:03:09'),
+(270, 'WGBYKO', 'H78899BJE3', '2025-12-04 09:50:34'),
+(271, 'WGBYKO', 'Z0SNMWDUVH', '2025-12-04 09:50:36');
 
 -- --------------------------------------------------------
 
@@ -583,11 +634,31 @@ INSERT INTO `members` (`member_id`, `user_id`, `contact`, `gender`, `date_of_bir
 (44, '6K020N', '8194067267', 'male', '2025-11-23', 'near forest colony', '', 'student', 'hey buddy\n', '2025-11-20 11:34:49'),
 (45, 'B1YFZC', '+6504640480', 'male', '2022-12-19', 'VsdeGVBQERHB', '', 'VWRGSDBV', 'ERBGAGBASB', '2025-11-21 11:25:49'),
 (46, 'A0TTD6', '9876546789', 'male', '2023-11-01', 'dwqfFF', '', 'dFEFEG', 'gargrre', '2025-11-21 11:53:06'),
-(47, '2TK4LE', '9988776655', 'male', '1989-01-15', 'afdsf afa dasfas', '', 'fasdfasfdasf', 'fadsf asfdasfdas asfdasf', '2025-11-21 15:57:41'),
+(47, '2TK4LE', '9988776650', 'male', '1989-01-15', 'afdsf afa dasfas', '', 'fasdfasfdasf', 'fadsf asfdasfdas asfdasf', '2025-11-21 15:57:41'),
 (48, 'R2OW73', '6325987410', 'male', '2025-12-03', 'Md Altamash', '', 'software developer', 'aaj he paiuda hua hu d', '2025-12-03 07:16:09'),
 (49, 'JE30JB', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2025-12-03 07:16:52'),
 (52, 'WGBYKO', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2025-12-03 08:51:10'),
-(53, 'YFY7XQ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2025-12-03 08:58:08');
+(53, 'YFY7XQ', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2025-12-03 08:58:08'),
+(54, '7INFY6', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2025-12-04 15:13:26'),
+(55, 'F6BTUH', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2025-12-05 06:04:37'),
+(56, 'XLT3SB', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2025-12-05 12:24:36'),
+(57, 'OA3D9Y', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2025-12-08 06:50:11'),
+(58, 'Y815EA', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2025-12-08 06:51:22'),
+(59, 'I62KEY', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2025-12-08 07:06:34'),
+(60, 'TD48HI', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2025-12-08 07:15:12'),
+(61, 'QX4IZ3', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2025-12-08 07:21:15'),
+(62, '3R8OBC', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2025-12-08 07:30:28'),
+(63, 'ELG69K', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2025-12-08 07:33:48'),
+(64, 'QSEEK9', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2025-12-08 07:36:12'),
+(65, '5E9U5Z', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2025-12-08 07:37:32'),
+(66, '62LE1O', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2025-12-08 10:25:09'),
+(67, 'JZ0TTD', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2025-12-08 10:25:54'),
+(68, '1RFK9E', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2025-12-08 10:46:46'),
+(69, '11SL98', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2025-12-08 11:08:59'),
+(70, 'HXYQGS', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2025-12-08 11:16:05'),
+(71, 'MG7CV1', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2025-12-08 11:37:54'),
+(72, '1ZMW9E', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2025-12-08 11:52:53'),
+(73, 'SZ9033', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2025-12-08 12:04:08');
 
 -- --------------------------------------------------------
 
@@ -628,7 +699,7 @@ CREATE TABLE `properties` (
   `before_label` varchar(100) DEFAULT NULL,
   `after_label` varchar(100) DEFAULT NULL,
   `land_area` varchar(100) DEFAULT NULL,
-  `garages` int DEFAULT NULL,
+  `garages` int DEFAULT '0',
   `garage_size` varchar(100) DEFAULT NULL,
   `year_built` int DEFAULT NULL,
   `private_note` text,
@@ -645,7 +716,7 @@ INSERT INTO `properties` (`property_id_1`, `property_id`, `agent_id`, `title`, `
 (20, 'AYN4C21Q9U', 'AGNBYIE8', '7 bedroom bungalow', '7 bedrooms\n9 bathrooms\n0.28 acres\n-First floor Living Hall\n-Dining room with 10 seater dining table\n-Grand curtains- 2 Tier High -Ceilings\n-Lovely 3 chandeliers\n-2 Kitchens – Dry and wet\n-Pipe-in sound system for whole house with pa system\n-CCTV 16 camera\n-Alarm system\n-Automatic gate from CSA Design\n-Air-conditioners with pipings\n-1 master bedroom with jacuzzi and walk- in wardrobe and large\nbalcony\n-2 large bedrooms with jacuzzi and long bath and walk- in\nwardrobes and personal balconies\n-Private theatre room with electric cinema chairs\n-1 Prayer room\n-Huge library cum office with 8 seater conference table with\nbalcony overlooking KLCC\n-Open Gym and boxing space\n-Open sky garden overlooking KLCC , KL tower and Lake Titiwangsa', 2000.00, 'Jalan Ikan, Seksyen 20', 'Shah Alam', 'Selangor', 'Malaysia', '40160', 'Bunglow', 'Gym, Parking, Swimming Pool, Fire Safety, Garage, Laundry Room, Air Conditioning', 7, 9, 7, 'rent', '2025-10-29 10:10:36', '2025-11-26 09:13:35', 1200.00, '', '', 1, 0, 0.00, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (22, '4UK04AUZ7Q', 'AGNQNTVL', 'Semi-Detached House', 'Taman Indah Puteri Salak Tinggi Sepang 1 Storey Semi Detached 49×56\n\n===============================\n\nDETAILS :\n– Leasehold,\n– Malay Reserved\n– Land Area : 2,777 sqft\n– 4 Bedrooms,\n– 2 Bathrooms\n– Built-up area: ~ 1,100 sq ft.(approx)\n– Basic unit\n– Currently tenanted\n\nAMENITIES :\n– Aeon Bandar Baru Nilai\n– Mesa Mall, Bandar Baru Nilai With Cinema\n– KIP Mall Kota Warisan\n– Mitsui Outlet Park Sepang\n– KIP Mall Kota Warisan\n– Sek Kebangsaan/menengah\n-SAM Bandar Baru Salak Tinggi\n– ERL Salak Tinggi – 7 KM\n– KLIA & KLIA2 – 10 KM\n– Masjid As-Syakirin\n\nACCESS :\n– Lebuhraya Sepang Nilai\n– Putrajaya-Cyberjaya Expressway (Dengkil bypass)\n– ELITE Highway exit KLIA & SERENIA CITY\n– MEX exit Putrajaya\n– LDP', 40000.00, 'Sepang, Selangor', 'Shah Alam', 'Selangor', 'Malaysia', '43900', 'House', 'Security System, Parking, Play Ground, Laundry Room, Fire Safety', 4, 1, 4, 'sale', '2025-11-04 12:14:52', '2025-11-26 09:13:35', 2777.00, NULL, '', 1, 0, 0.00, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (23, 'SGPUS4ZA95', 'AGNQNTVL', '3 bedroom house', 'ugxuaghduiasghdusighsui', 120000.00, 'near forest colony', 'aligarh', 'up', 'india', '202001', 'Apartment', 'Security System, Gardens/Lawns/Parks, Concierge Services, Air Conditioning', 5, 3, 6, 'sale', '2025-11-13 05:34:02', '2025-11-26 09:13:35', 600.00, '', '', 1, 0, 0.00, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(27, 'NKJT5Z6NG1', 'AGNBYIE8', 'wsfG', 'gweg', 0.00, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'rent', '2025-11-17 10:59:07', '2025-11-26 09:13:35', NULL, NULL, NULL, 0, 0, 0.00, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(27, 'NKJT5Z6NG1', 'AGNBYIE8', 'bhootnat', 'bhootiya ', 15000.00, 'near forest colony', 'Pekan', 'Pahang', 'Malaysia', '202001', 'Villa', 'Security System,Air Conditioning,Gym,Parking,Solar Panels', 3, 1, 4, 'rent', '2025-11-17 10:59:07', '2025-12-05 06:59:05', 400.00, '20.56868', '21.5879', 0, 0, 0.00, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (28, 'I789DP8RRA', 'AGNQNTVL', 'Puteri Bayu, Bandar Puteri Puchong – Apartment For Rent', 'Puteri Bayu Condo, Bandar Puteri Puchong (900sf, 2 Car Park)\r\n\r\n-900sf\r\n-3 Room 2 Bathroom\r\n-2 Car Park\r\n-Low Floor\r\n-Kitchen Cabinet, Build in Wardrobe, 2 unit Air Cond, Water Heater, Fridge\r\n-24 Hour Security, Swimming Pool\r\n\r\n************************\r\nAsking RM 1,300\r\n************************\r\n\r\nREN 19081\r\nVivahomes Realty Sdn Bhd (1102810-V)\r\nNo.25-3, JAlan PJU 5/20E, The Strand, Kota Damansara, 47810 Petaling Jaya, Selangor\r\n\r\nFacilities & Security Systems\r\nFacilities\r\nSwimming Pool\r\nGymnasium\r\nCovered Parking\r\nMulti Purpose Hall\r\nConvenient Stores\r\nCafe & Restaurants\r\nJogging Track\r\nPlayground\r\nNursery Centre\r\nSecurity Systems\r\n24 Hours Sec', 1300.00, 'Puteri Bayu, Bandar Puteri Puchong', 'Shah Alam', 'Selangor', 'Malaysia', '', 'Apartment', '', 3, 2, 3, 'rent', '2025-11-17 10:59:57', '2025-11-26 09:13:35', 400.00, '', '', 1, 0, 4.00, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (29, 'WBO6KYV76Z', 'AGNQNTVL', 'Semi-Detached House', 'Taman Indah Puteri Salak Tinggi Sepang 1 Storey Semi Detached 49×56\n\n==========================\n\nDETAILS :\n– Leasehold,\n– Malay Reserved\n– Land Area : 2,777 sqft\n– 4 Bedrooms,\n– 2 Bathrooms\n– Built-up area: ~ 1,100 sq ft.(approx)\n– Basic unit\n– Currently tenanted\n\nAMENITIES :\n– Aeon Bandar Baru Nilai\n– Mesa Mall, Bandar Baru Nilai With Cinema\n– KIP Mall Kota Warisan\n– Mitsui Outlet Park Sepang\n– KIP Mall Kota Warisan\n– Sek Kebangsaan/menengah\n-SAM Bandar Baru Salak Tinggi\n– ERL Salak Tinggi – 7 KM\n– KLIA & KLIA2 – 10 KM\n– Masjid As-Syakirin\n\nACCESS :\n– Lebuhraya Sepang Nilai\n– Putrajaya-Cyberjaya Expressway (Dengkil bypass)\n– ELITE Highway exit KLIA & SERENIA CITY\n– MEX exit Putrajaya\n– LDP', 400000.00, 'Sepang, Selangor', 'Shah Alam', 'Selangor', 'Malaysia', '43900', 'Semi-detached House', 'Security System, Solar Panels, Microwave, Club House, Parking, Play Ground', 4, 2, 4, 'sale', '2025-11-17 11:06:58', '2025-12-03 04:55:31', 1200.00, NULL, NULL, 0, 0, 5.00, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (30, '4D6KZ0RK6Z', 'AGNQNTVL', 'awesome home', 'hey', 500000.00, 'near forest colony', 'Taiping', 'Perak', 'Malaysia', '202001', 'Bungalow', 'Security System, Gardens/Lawns/Parks, Air Conditioning, Play Ground', 4, 2, 4, '', '2025-11-17 12:15:54', '2025-11-26 09:13:35', 0.00, '', '', 1, 0, 0.00, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -657,18 +728,22 @@ INSERT INTO `properties` (`property_id_1`, `property_id`, `agent_id`, `title`, `
 (36, 'K4NMWCQCB8', 'AGNQNTVL', 'al fida ', 'bahut acchi hai bhai', 1200.00, 'fm tower', 'Lumut', 'Perak', 'Malaysia', '202001', 'Apartment', 'Security System, Gardens/Lawns/Parks, Parking', 1, 1, 13, 'rent', '2025-11-18 05:14:59', '2025-12-03 04:42:06', 400.00, '587984.2984', '5532.14946', 0, 0, 5.00, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (37, 'XPENSQ1O0P', 'AGNQNTVL', 'faheem ka ghar', 'this is awe', 40000.00, 'near ', 'Sipitang', 'Sabah', 'Malaysia', '202001', 'Apartment', 'Swimming Pool, Playgrounds', 2, 3, 2, 'sale', '2025-11-20 12:17:39', '2025-11-26 09:13:35', 600.00, '', '', 1, 0, 0.00, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (38, '9V9IHL9985', 'AGNQNTVL', 'faheem ', 'nice', 900.00, 'near', 'Kuala Lumpur', 'Kuala Lumpur', 'Malaysia', '202001', 'Apartment', 'Security System, Parking', 8, 1, 2, 'rent', '2025-11-20 12:23:54', '2025-12-03 04:47:50', 300.00, '151561.31856', '641661.16160131', 0, 0, 3.50, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(39, 'PVXPJAJJRY', 'AGNQNTVL', '3BHK Flat RM1500 for Rent', 'fasdfa sfdasdfasfasfasd', 1500.00, 'hell no', 'Bayan Lepas', 'Penang', 'Malaysia', '200124', 'Apartment', 'Security System, Market, Play Ground, Parking, Fire Safety, Swimming Pool, Gym', 3, 2, 3, 'rent', '2025-11-20 16:59:45', '2025-11-26 09:13:35', 1000.00, '', '', 0, 0, 0.00, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(39, 'PVXPJAJJRY', 'AGNQNTVL', '3BHK Flat RM1500 for Rent', 'fasdfa sfdasdfasfasfasd', 1500.00, 'hell no', 'Bayan Lepas', 'Penang', 'Malaysia', '200124', 'Apartment', 'Security System, Market, Play Ground, Parking, Fire Safety, Swimming Pool, Gym', 3, 2, 3, 'rent', '2025-11-20 16:59:45', '2025-12-04 07:27:18', 1000.00, '', '', 0, 0, 5.00, 1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (40, '5PTLBKIM97', 'AGN9IIPO', 'Ghost House', 'ARGHAREHGERA', 200.00, 'AREHREHAE', 'Alor Setar', 'Kedah', 'Malaysia', '831004', 'Villa', 'Security System, Solar Panels, Gym, Sports Facilities, Swimming Pool, Gardens/Lawns/Parks, Concierge Services, Playgrounds, Central Heating, Dishwasher, Laundry Room, Air Conditioning, Microwave, Garage, Toolshed, Market, Yoga Wellness, Spa Wellness, Fire Safety, Club House, Play Ground, Parking', 7, 14, 7, 'rent', '2025-11-21 11:33:42', '2025-12-03 07:01:32', 1000.00, NULL, '', 0, 1, 3.00, 3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (41, 'Z0SNMWDUVH', 'AGNHIVLZ', 'ytcavdad', 'utejcavuicavc', 390.00, 'wegageea', 'Kampar', 'Perak', 'Malaysia', '678009', 'Apartment', '', 6, 4, 6, 'rent', '2025-11-21 12:21:50', '2025-11-26 09:13:35', 10000.00, '', '', 0, 1, 0.00, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (42, 'K3GR7D2W2A', 'AGNBYIE8', '6 bedroom bungalow', '6 Bedrooms | 4 Bathrooms\r\nA hidden gem nestled in the heart of Perlis, offering a perfect blend of tranquility and accessibility. Surrounded by key landmarks and essential amenities, this home provides a peaceful retreat while staying well-connected to the vibrant pulse of the town.\r\n\r\nLocated in the serene and green neighborhood of Taman U-thant, this charming property offers a quiet escape with nature at your doorstep. Built in 1975, it sits on a generous 19,465 square feet of land with a built-up area of 4,670 square feet—thoughtfully designed for spacious and comfortable family living.\r\n\r\nThe house is beautifully maintained, exuding a vintage charm, and is surrounded by a large garden that enhances its peaceful ambiance.', 4121112.00, 'kangar', 'Kangar', 'Perlis', 'Malaysia', '202001', 'Bungalow', 'other, Parking, Play Ground, Gym, Security System, Swimming Pool', 6, 4, 6, 'sale', '2025-11-24 05:28:37', '2025-11-26 09:13:35', 4670.00, '', '', 0, 0, 0.00, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(43, 'YPDI4TFFLE', 'AGNZV75V', '4BHK Flat RM1800 for Rent', 'fads asdfasf asfasf asdfasf asdfasf asdfasfa', 1800.00, '123 Main Street', 'Kajang', 'Selangor', 'Malaysia', '43000', 'Apartment', 'Security System, Garage, Club House, Play Ground, Market, Others', 3, 3, 4, 'rent', '2025-11-25 17:09:39', '2025-12-02 16:12:39', 1100.00, '2.9221098', '101.7329167', 0, 0, 3.50, 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(43, 'YPDI4TFFLE', 'AGNZV75V', '4BHK Flat RM1800 for Rent', 'fads asdfasf asfasf asdfasf asdfasf asdfasfa', 1800.00, 'Batu 9 Cheras, Bandar Tun Hussein Onn', 'Kajang', 'Selangor', 'Malaysia', '43200', 'Apartment', 'Security System,Garage,Club House,Play Ground,Market,Others', 3, 2, 4, 'rent', '2025-11-25 17:09:39', '2025-12-05 13:39:32', 1100.00, '3.054445', '101.7592808', 0, 0, 3.50, 2, '', NULL, NULL, NULL, NULL, '1300', 1, '', 2024, '', ''),
 (44, 'W3HTC0SK99', 'AGNTXYM2', '2BHK Flat RM1050 for Rent', 'asdfas afsdfas asfasfa asfasfdas asdfasf asdfasfa asdfasfa dsfdasdf sdfasf asfasfa', 1050.00, '125 Main Street', 'Ranau', 'Sabah', 'Malaysia', '89300', 'Studio', 'Swimming Pool, Parking, Club House, Security System, Gym, other', 1, 1, 2, 'rent', '2025-11-25 17:25:02', '2025-11-26 09:13:35', 900.00, '5.8413342', '115', 0, 0, 0.00, 0, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (45, '9BG4Z7VGEB', 'AGNBYIE8', 'real top home', 'this is best deal  ever', 300000.00, 'shah alam', 'Shah Alam', 'Selangor', 'Malaysia', '202001', 'Apartment', 'Security System, Parking', 2, 1, 2, 'sale', '2025-11-26 04:28:15', '2025-12-02 06:36:34', 600.00, '3.5092', '101.5248', 0, 0, 5.00, 1, 'heigh school', 'New', 'Total', '300000', '290000', '1100', 1, '100', 2025, '', ''),
-(46, 'MLT0CEP1UR', 'AGNBYIE8', 'awesom', 'ehh', 130000.00, 'near', 'Sandakan', 'Sabah', 'Malaysia', '200121', 'Apartment', 'Security System, Laundry Room', 2, 7, 2, 'sale', '2025-11-26 11:39:21', '2025-11-26 12:04:57', 600.00, '', '', 0, 0, 0.00, 0, 'hyhjhi', 'Hot Offer', 'Monthly', '', '', '1000', 7, '100', 2010, 'hiii', ''),
+(46, 'MLT0CEP1UR', 'AGNBYIE8', 'awesome', 'wow ', 130000.00, 'near', 'Sandakan', 'Sabah', 'Malaysia', '200121', 'Apartment', 'Security System,Laundry Room,Gardens/Lawns/Parks,Yoga Wellness', 3, 6, 2, 'sale', '2025-11-26 11:39:21', '2025-12-08 12:47:52', 700.00, '11.25987', 'bb', 0, 0, 0.00, 0, 'hyhjhi', 'Hot Offer', '', '', '', '1000', 1, '100', 2011, 'wow', ''),
 (52, 'V5S8JPMRMJ', 'AGNBYIE8', 'fablous', 'hshjahukwsgu', 1500.00, 'ehae', 'Kuala Selangor', 'Selangor', 'Malaysia', '449431', 'Apartment', 'Concierge Services, Fire Safety', 4, 4, 2, 'rent', '2025-11-26 12:04:24', '2025-12-03 05:00:58', 150.00, '101.555555', '', 0, 0, 0.00, 0, 'gwaegag', 'Hot Offer', 'Monthly', '', '', '20', 6, '150000', 1951, 'ewhqa', ''),
-(53, '5YYN5GMG66', 'AGNBYIE8', 'House In Foxhall Ave, Kingston', 'Massa tempor nec feugiat nisl pretium. Egestas fringilla phasellus faucibus scelerisque eleifend donec. Porta nibh venenatis cras sed felis eget velit aliquet. Neque volutpat ac tincidunt vitae semper quis lectus. Turpis in eu mi bibendum neque egestas congue quisque. Sed elementum tempus egestas sed sed risus pretium quam. Dignissim sodales ut eu sem. Nibh mauris cursus mattis molestie a iaculis at erat pellentesque. Id interdum velit laoreet id donec ultrices tincidunt.', 550.00, '289 Foxhall Ave, Kingston', 'George Town', 'Penang', 'Malaysia', '202001', 'Townhouse', 'Security System, Gardens/Lawns/Parks, Concierge Services, Microwave, Parking, Play Ground, Gym, Swimming Pool, others', 3, 2, 4, 'rent', '2025-12-01 10:10:51', '2025-12-03 05:11:35', 900.00, '115.88888', '20.845645', 0, 0, 0.00, 0, '', 'Premium', 'Monthly', '', '', '2000', 1, '50', 2020, '', ''),
+(53, '5YYN5GMG66', 'AGNBYIE8', 'House In Foxhall Ave, Kingston', 'Massa tempor nec feugiat nisl pretium. Egestas fringilla phasellus faucibus scelerisque eleifend donec. Porta nibh venenatis cras sed felis eget velit aliquet. Neque volutpat ac tincidunt vitae semper quis lectus. Turpis in eu mi bibendum neque egestas congue quisque. Sed elementum tempus egestas sed sed risus pretium quam. Dignissim sodales ut eu sem. Nibh mauris cursus mattis molestie a iaculis at erat pellentesque. Id interdum velit laoreet id donec ultrices tincidunt.', 550.00, '289 Foxhall Ave, Kingston', 'George Town', 'Penang', 'Malaysia', '202001', 'Townhouse', 'Security System, Gardens/Lawns/Parks, Concierge Services, Microwave, Parking, Play Ground, Gym, Swimming Pool, others', 3, 2, 4, 'rent', '2025-12-01 10:10:51', '2025-12-04 10:58:40', 900.00, '115.88888', '20.845645', 1, 0, 0.00, 0, '', 'Premium', 'Monthly', '', '', '2000', 1, '50', 2020, '', ''),
 (54, 'H78899BJE3', 'WDV1A258', 'vfg', 'vfgaghdsg wetg gwreg d', 1250.00, 'telco kharangajhar', 'Miri', 'Sarawak', 'Malaysia', '831004', 'Studio', 'Security System, Playgrounds', 9, 8, 4, 'rent', '2025-12-03 09:06:39', '2025-12-03 10:27:43', 600.00, '13.632', '101.711645687435168435', 0, 1, 0.00, 0, 'argsg', 'Hot Offer', 'Monthly', '', '', '900', 10, '1800', 1926, 'KHUD DEKHLO', ''),
-(55, 'C1YCLODH3P', '984OQDDG', 'aerhrae', 'earhaerh', 1250000000.00, 'eherahaer', 'Sibu', 'Sarawak', 'Malaysia', '831004', 'Apartment', 'Security System, Gym', 1, 1, 1, 'sale', '2025-12-03 09:45:17', '2025-12-03 09:45:17', 1.00, '516.36', '225.32', 0, 0, 0.00, 0, 'erhaerh', 'Hot Offer', 'Thousand', '', '', '1', 1, '1', 2025, 'ggmmmaaa', '');
+(55, 'C1YCLODH3P', '984OQDDG', 'aerhrae', 'earhaerh', 1250000000.00, 'eherahaer', 'Sibu', 'Sarawak', 'Malaysia', '831004', 'Apartment', 'Security System, Gym', 1, 1, 1, 'sale', '2025-12-03 09:45:17', '2025-12-03 09:45:17', 1.00, '516.36', '225.32', 0, 0, 0.00, 0, 'erhaerh', 'Hot Offer', 'Thousand', '', '', '1', 1, '1', 2025, 'ggmmmaaa', ''),
+(56, 'KODJDX7Z24', 'WDV1A258', 'fdd', 'gaewgfewa', 1265.00, 'telco kharangajhar', 'Pontian', 'Johor', 'Malaysia', '831004', 'Apartment', 'Security System, Yoga Wellness', 3, 3, 3, 'rent', '2025-12-04 04:06:53', '2025-12-04 04:06:53', 12365.00, '123.0285', '55.365', 0, 0, 0.00, 0, 'trjs', 'Hot Offer', 'Monthly', '', '', '12365', 3, '1230', 2025, 'lekr toh dekho', ''),
+(57, 'VIQVT7BN25', 'WDV1A258', 'gvsfgrd', '', 120.00, '', 'Pasir Mas', 'Kelantan', 'Malaysia', '', 'Shop Office', '', 1, 1, 2, 'sale', '2025-12-04 04:24:25', '2025-12-04 04:24:25', 1230.00, '0', '0', 0, 0, 0.00, 0, '', '', 'Thousand', '', '', '123', 0, '', 0, '', ''),
+(58, 'ZICV2EKDUV', 'WDV1A258', 'swtga', '', 1250.00, '', 'Kuala Krai', 'Kelantan', 'Malaysia', '', 'Apartment', '', 0, 0, 0, 'sale', '2025-12-04 04:25:18', '2025-12-04 04:25:18', 0.00, '0', '0', 0, 0, 0.00, 0, '', '', 'Thousand', '', '', '0', 0, '', 0, '', ''),
+(59, '0O343RC243', 'WDV1A258', 'hgg', 'rtet', 1561.00, 'rhtth', 'Putrajaya', 'Putrajaya', 'Malaysia', '', 'Apartment', '', 0, 12, 3, 'sale', '2025-12-04 09:47:20', '2025-12-08 05:07:57', 0.00, '0', '0', 0, 0, 0.00, 0, '', '', '', '', '', '0', 5, '0', 1976, 'hattt bssssss', '');
 
 --
 -- Triggers `properties`
@@ -720,8 +795,6 @@ INSERT INTO `property_images` (`image_id`, `property_id`, `image_url`, `is_cover
 (131, '1GVRUQTMDQ', 'https://demo.myhomemarkets.com/wp-content/uploads/2025/04/3-4.jpg', 0, '2025-11-10 06:19:50'),
 (132, 'SGPUS4ZA95', 'https://demo.myhomemarkets.com/wp-content/uploads/2025/05/apt.jpg', 0, '2025-11-13 05:34:02'),
 (133, 'SGPUS4ZA95', 'https://demo.myhomemarkets.com/wp-content/uploads/2025/05/b8a046853745ff2fd665ef86aa9321eb-2930112960682472567.jpg', 0, '2025-11-13 05:34:02'),
-(134, 'NKJT5Z6NG1', '4b077628402d4992a9563b66f97c6c58_image_2.png', 0, '2025-11-17 10:59:07'),
-(135, 'NKJT5Z6NG1', '3e69e4b5ea7342b291c977e9e6ed731f_image_1.png', 0, '2025-11-17 10:59:07'),
 (136, 'I789DP8RRA', '459f134a0df347b787f46633f4d051c4_raCbrBSQ0SOdaRAwiIey-870x420.jpg', 0, '2025-11-17 10:59:57'),
 (137, 'I789DP8RRA', '64d0ad7914f14a56bf09cdb0269d2439_nBXLWWpgd99hRqgl3mDO-870x420.jpg', 0, '2025-11-17 10:59:57'),
 (138, 'I789DP8RRA', '74d28d4a852b46f18177624032fcb345_jktNETMgbiTXMcAzfboG-870x420.jpg', 0, '2025-11-17 10:59:57'),
@@ -749,8 +822,6 @@ INSERT INTO `property_images` (`image_id`, `property_id`, `image_url`, `is_cover
 (172, '9BG4Z7VGEB', '83f9a6476502446290f2ac095330b35c_412102bc106469b4abb98dfff1c59c4a-2894978747564746839-250x130.jpg', 0, '2025-11-26 04:28:16'),
 (173, '9BG4Z7VGEB', '4c9aac3144fa41189063a342316d7a9b_464cedd613e995057441f8612e8a4880-2894978776018532434-870x420.jpg', 0, '2025-11-26 04:28:16'),
 (174, '9BG4Z7VGEB', '7a7bebbab3314ac4b590ef1187e76aa1_407ff0a72fbb19f52b327b3166354bfd-2894978757445498962-870x420.jpg', 0, '2025-11-26 04:28:16'),
-(175, 'MLT0CEP1UR', '904f222c9ae14e27b3f1ca642fd56c90_9c531d26e3d991f75f045966c6e80d54-2914060520164991287_1.jpg', 0, '2025-11-26 11:39:21'),
-(185, 'YPDI4TFFLE', 'f493e1fae29047e0a71341957a5f7f99_images.jpeg', 0, '2025-12-02 16:12:39'),
 (200, 'K4NMWCQCB8', '8702bcc4dae84ec081992fe0e9288552_a08c44223d926972957653686ccdcb3b-2894978753603319890-870x420.jpg', 0, '2025-12-03 04:42:06'),
 (201, 'K4NMWCQCB8', '57738b6728eb42929d5c2bcde2a08259_412102bc106469b4abb98dfff1c59c4a-2894978747564746839-250x130.jpg', 0, '2025-12-03 04:42:06'),
 (202, 'K4NMWCQCB8', '8bc9dfed92594f339b8c3eeb4b8a3d7a_464cedd613e995057441f8612e8a4880-2894978776018532434-870x420.jpg', 0, '2025-12-03 04:42:06'),
@@ -778,7 +849,20 @@ INSERT INTO `property_images` (`image_id`, `property_id`, `image_url`, `is_cover
 (240, 'H78899BJE3', '1f910f3a52b640fe81efa94bb48e9e52_Generated_Image_October_08_2025_-_5_38PM_4.png', 0, '2025-12-03 10:27:43'),
 (241, 'H78899BJE3', '5e70d21fa5534e46b1c27032fad7096b_Generated_Image_October_08_2025_-_5_38PM_3.png', 0, '2025-12-03 10:27:43'),
 (242, 'H78899BJE3', '6d4c2929866f4c89b8dc135caa4aa9a6_Generated_Image_October_08_2025_-_5_38PM_2.png', 0, '2025-12-03 10:27:43'),
-(243, 'H78899BJE3', '4a2ebaaaae1242eabbfac7f265dd53df_Generated_Image_October_08_2025_-_5_38PM_1.png', 0, '2025-12-03 10:27:43');
+(243, 'H78899BJE3', '4a2ebaaaae1242eabbfac7f265dd53df_Generated_Image_October_08_2025_-_5_38PM_1.png', 0, '2025-12-03 10:27:43'),
+(244, 'KODJDX7Z24', '9ce159feea114f9aae810fe940173634_Generated_Image_October_09_2025_-_2_30PM.png', 0, '2025-12-04 04:06:53'),
+(245, 'KODJDX7Z24', 'f6664ed67f55450e9f50f7ae593d0595_Generated_Image_October_08_2025_-_5_38PM_4.png', 0, '2025-12-04 04:06:53'),
+(246, 'KODJDX7Z24', 'bb5fb8e7c07a4b5585c2a5b408b15eb4_Generated_Image_October_08_2025_-_5_38PM_3.png', 0, '2025-12-04 04:06:53'),
+(247, 'KODJDX7Z24', '16d699ca02204b799c00d1ce671d9ece_Generated_Image_October_08_2025_-_5_38PM_2.png', 0, '2025-12-04 04:06:53'),
+(248, 'VIQVT7BN25', '6fe68006dbc74798899cad6024e62c9c_Generated_Image_October_09_2025_-_2_30PM.png', 0, '2025-12-04 04:24:25'),
+(249, 'ZICV2EKDUV', '141a74b57ea04c12aff5b00c4039715e_Generated_Image_October_08_2025_-_5_38PM_4.png', 0, '2025-12-04 04:25:18'),
+(285, 'NKJT5Z6NG1', '4b077628402d4992a9563b66f97c6c58_image_2.png', 0, '2025-12-05 06:59:05'),
+(286, 'NKJT5Z6NG1', '3e69e4b5ea7342b291c977e9e6ed731f_image_1.png', 0, '2025-12-05 06:59:05'),
+(297, 'MLT0CEP1UR', '904f222c9ae14e27b3f1ca642fd56c90_9c531d26e3d991f75f045966c6e80d54-2914060520164991287_1.jpg', 0, '2025-12-05 09:00:40'),
+(298, 'YPDI4TFFLE', 'f493e1fae29047e0a71341957a5f7f99_images.jpeg', 0, '2025-12-05 13:39:32'),
+(301, '0O343RC243', 'f478eba19f6746bf9bec279a147a5692_image_2.png', 0, '2025-12-08 05:06:17'),
+(305, '0O343RC243', '467967e26d90418f8776f8e342b524e7_free-photo-of-drone-shot-of-building-construction.jpeg', 0, '2025-12-08 05:07:57'),
+(306, '0O343RC243', '291d7b184f6040b39b45ebcba1d661b5_image_1.png', 0, '2025-12-08 05:48:57');
 
 -- --------------------------------------------------------
 
@@ -832,7 +916,9 @@ INSERT INTO `reviews` (`review_id`, `reviewer_user_id`, `review_target_type`, `r
 (47, '96S4X2', 'property', '5PTLBKIM97', 3, 'fads safasdfa fsdfasf dffafdfd adsfasfa', '2025-12-02 16:55:09'),
 (48, 'R2OW73', 'agent', 'AGN9IIPO', 2, 'bdk dining', '2025-12-03 06:59:20'),
 (50, 'R2OW73', 'property', '5PTLBKIM97', 1, 'fd', '2025-12-03 07:01:32'),
-(51, '6K020N', 'agent', '984OQDDG', 2, 'wow beautyful', '2025-12-03 09:48:17');
+(51, '6K020N', 'agent', '984OQDDG', 2, 'wow beautyful', '2025-12-03 09:48:17'),
+(52, '96S4X2', 'agent', 'AGNTXYM2', 4, 'fadsf asdfdasf asdfdsfads', '2025-12-03 13:02:31'),
+(53, 'WGBYKO', 'property', 'PVXPJAJJRY', 5, 'wqtw', '2025-12-04 07:27:18');
 
 -- --------------------------------------------------------
 
@@ -882,7 +968,11 @@ INSERT INTO `saved_searches` (`search_id`, `user_id`, `search_name`, `search_par
 (22, '2TK4LE', 'Rent apartment 3BHK price RM1500', '{\"listing_type\": \"RENT\", \"city\": \"\", \"property_type\": \"apartment\", \"max_price\": \"1500\", \"min_price\": \"500\", \"bedrooms\": \"3\", \"state\": \"\", \"keyword\": \"\"}', '2025-11-21 15:51:02'),
 (23, 'UNG2OZ', 'Rent apartment 3BHK', '{\"listing_type\": \"RENT\", \"city\": \"\", \"property_type\": \"apartment\", \"max_price\": \"\", \"min_price\": \"\", \"bedrooms\": \"3\", \"state\": \"\", \"keyword\": \"\"}', '2025-12-01 11:29:34'),
 (25, '6K020N', 'Rent apartment 3BHK', '{\"listing_type\": \"RENT\", \"city\": \"\", \"property_type\": \"apartment\", \"max_price\": \"\", \"min_price\": \"\", \"bedrooms\": \"3\", \"state\": \"\", \"keyword\": \"\"}', '2025-12-01 12:30:29'),
-(26, 'UNG2OZ', 'Rent 3BHK', '{\"listing_type\": \"RENT\", \"city\": \"\", \"property_type\": \"\", \"max_price\": \"\", \"min_price\": \"\", \"bedrooms\": \"3\", \"state\": \"\", \"keyword\": \"\"}', '2025-12-02 10:47:29');
+(26, 'UNG2OZ', 'Rent 3BHK', '{\"listing_type\": \"RENT\", \"city\": \"\", \"property_type\": \"\", \"max_price\": \"\", \"min_price\": \"\", \"bedrooms\": \"3\", \"state\": \"\", \"keyword\": \"\"}', '2025-12-02 10:47:29'),
+(37, 'WGBYKO', 'Buy', '{\"listing_type\": \"SALE\", \"state\": \"\", \"city\": \"\", \"propertyType\": \"\", \"priceMin\": \"0\", \"priceMax\": \"900\", \"bedrooms\": \"\", \"bathrooms\": \"\", \"keyword\": \"\"}', '2025-12-04 08:39:42'),
+(38, 'WGBYKO', 'Rent', '{\"listing_type\": \"RENT\", \"state\": \"\", \"city\": \"\", \"propertyType\": \"apartment\", \"priceMin\": \"0\", \"priceMax\": \"900\", \"bedrooms\": \"\", \"bathrooms\": \"\", \"keyword\": \"\"}', '2025-12-04 08:46:36'),
+(39, 'WGBYKO', 'Rent 2BHK', '{\"listing_type\": \"RENT\", \"state\": \"\", \"city\": \"\", \"propertyType\": \"apartment\", \"priceMin\": \"0\", \"priceMax\": \"1200\", \"bedrooms\": \"2\", \"bathrooms\": \"\", \"keyword\": \"\"}', '2025-12-04 09:16:57'),
+(40, 'F6BTUH', 'Rent 1BHK', '{\"listing_type\": \"RENT\", \"state\": \"\", \"city\": \"\", \"propertyType\": \"\", \"priceMin\": \"\", \"priceMax\": \"\", \"bedrooms\": \"1\", \"bathrooms\": \"\", \"keyword\": \"\"}', '2025-12-05 07:16:10');
 
 -- --------------------------------------------------------
 
@@ -1004,7 +1094,10 @@ INSERT INTO `transactions` (`transaction_id`, `agent_id`, `transaction_type`, `a
 (61, 'AGNBYIE8', 'spend', -1, 'Spent 1 credit to post property: fgg', NULL, '2025-11-26 12:04:23', 'CEQ2US65XY'),
 (62, 'AGNZV75V', 'purchase', 25, 'Purchase of 25 credits ', '50', '2025-11-26 16:29:17', 'WDW7UEB33X'),
 (63, 'AGNBYIE8', 'spend', -1, 'Spent 1 credit to post property: House In Foxhall Ave, Kingston', NULL, '2025-12-01 10:10:51', '9RUNG5ZCH7'),
-(64, 'WDV1A258', 'purchase', 10, 'Purchase of 10 credits ', '51', '2025-12-03 09:02:03', 'V2AZWBHD3Y');
+(64, 'WDV1A258', 'purchase', 10, 'Purchase of 10 credits ', '51', '2025-12-03 09:02:03', 'V2AZWBHD3Y'),
+(73, 'WDV1A258', 'spend', -1, 'Spent 1 credit to post property: gvsfgrd', NULL, '2025-12-04 04:24:25', 'BJGFK6XVCU'),
+(74, 'WDV1A258', 'spend', -1, 'Spent 1 credit to post property: swtga', NULL, '2025-12-04 04:25:18', 'AACMRMLT4P'),
+(75, 'WDV1A258', 'spend', -1, 'Spent 1 credit to post property: hgg', NULL, '2025-12-04 09:47:20', '6776XWJNDP');
 
 --
 -- Triggers `transactions`
@@ -1045,7 +1138,7 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`user_id_1`, `role_id`, `name`, `email`, `password_hash`, `is_active`, `created_at`, `updated_at`, `user_id`, `average_rating`, `review_count`, `reset_token`, `reset_token_expires`) VALUES
 (17, 2, 'farman', 'farman@gmail.com', '6c69d00baef0f8b17fdc6756e4bbc1d8d6e527b4f4e9d010817efa798ccb1e26', 1, '2025-10-27 09:45:51', '2025-12-02 10:33:12', 'UNG2OZ', 0.00, 0, NULL, NULL),
 (18, 2, 'altamash', 'altamash3321@gmail.com', '6c69d00baef0f8b17fdc6756e4bbc1d8d6e527b4f4e9d010817efa798ccb1e26', 1, '2025-10-28 07:25:29', '2025-12-01 08:12:22', 'IE6C0P', 0.00, 0, '3ff19907-22b7-4945-814b-f4ca6c9706ba', '2025-11-26 13:24:43'),
-(19, 1, 'aabanhn', 'aabanfarr@gmail.com', 'e150a23926ac8db2ef2e12cb357427f91a60c334accffd85b03806f8dd60aa0c', 1, '2025-10-28 08:31:55', '2025-12-02 10:19:21', '6K020N', 0.00, 0, NULL, NULL),
+(19, 1, 'aabanhn', 'aabanfarr@gmail.com', 'e150a23926ac8db2ef2e12cb357427f91a60c334accffd85b03806f8dd60aa0c', 1, '2025-10-28 08:31:55', '2025-12-08 05:28:27', '6K020N', 0.00, 0, NULL, NULL),
 (20, 3, 'faheem', 'faheem@gmail.com', '6c69d00baef0f8b17fdc6756e4bbc1d8d6e527b4f4e9d010817efa798ccb1e26', 1, '2025-11-11 05:07:32', '2025-12-01 08:12:22', '0DH1FT', 0.00, 0, NULL, NULL),
 (21, 3, 'farru', 'farman123@gmail.com', '6c69d00baef0f8b17fdc6756e4bbc1d8d6e527b4f4e9d010817efa798ccb1e26', 1, '2025-11-11 05:53:39', '2025-12-01 08:12:22', '0EQ469', 0.00, 0, NULL, NULL),
 (30, 4, 'farru', 'farru@gmail.com', '6c69d00baef0f8b17fdc6756e4bbc1d8d6e527b4f4e9d010817efa798ccb1e26', 1, '2025-11-14 12:19:20', '2025-12-01 08:12:22', 'GR9OA8', 0.00, 0, NULL, NULL),
@@ -1058,14 +1151,14 @@ INSERT INTO `users` (`user_id_1`, `role_id`, `name`, `email`, `password_hash`, `
 (43, 1, 'pooja', 'pooja@gmail.com', '6c69d00baef0f8b17fdc6756e4bbc1d8d6e527b4f4e9d010817efa798ccb1e26', 1, '2025-11-18 06:56:26', '2025-12-01 08:12:22', 'PGWWGA', 0.00, 0, NULL, NULL),
 (44, 2, 'ankit', 'ankit@gmail.com', '6c69d00baef0f8b17fdc6756e4bbc1d8d6e527b4f4e9d010817efa798ccb1e26', 1, '2025-11-18 07:14:22', '2025-12-01 08:12:22', '4UNG3R', 0.00, 0, NULL, NULL),
 (45, 2, 'Himanshu', 'Himanshu@gmail.com', '6c69d00baef0f8b17fdc6756e4bbc1d8d6e527b4f4e9d010817efa798ccb1e26', 1, '2025-11-18 07:49:54', '2025-12-01 08:12:22', '579F1P', 0.00, 0, NULL, NULL),
-(48, 1, 'rekha', 'rekha@gmail.com', '6c69d00baef0f8b17fdc6756e4bbc1d8d6e527b4f4e9d010817efa798ccb1e26', 1, '2025-11-19 12:17:23', '2025-12-01 08:12:22', 'RI1DGY', 0.00, 0, NULL, NULL),
+(48, 2, 'rekha', 'rekha@gmail.com', '6c69d00baef0f8b17fdc6756e4bbc1d8d6e527b4f4e9d010817efa798ccb1e26', 1, '2025-11-19 12:17:23', '2025-12-05 09:37:15', 'RI1DGY', 0.00, 0, NULL, NULL),
 (49, 1, 'tabish', 'tabish@gmail.com', '6c69d00baef0f8b17fdc6756e4bbc1d8d6e527b4f4e9d010817efa798ccb1e26', 1, '2025-11-19 12:27:40', '2025-12-01 08:12:22', 'ZRMKN9', 0.00, 0, NULL, NULL),
 (55, 1, 'Farzan', 'farzan@atxlearning.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 1, '2025-11-19 15:38:33', '2025-12-01 08:12:22', '5BUZ4F', 0.00, 0, NULL, NULL),
-(56, 1, 'altamash', 'md.altamash7257@gmail.com', '2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824', 1, '2025-11-20 05:56:24', '2025-12-01 08:12:22', '6T9LU7', 0.00, 0, NULL, NULL),
+(56, 1, 'altamash', 'md.altamash7257@gmail.com', '2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824', 1, '2025-11-20 05:56:24', '2025-12-05 11:57:39', '6T9LU7', 0.00, 0, '6c02d506-7d24-4c36-8de9-2bd840c2ab2f', '2025-12-05 18:27:39'),
 (57, 1, 'eggaeg', 'altamash2@gmail.com', '2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824', 1, '2025-11-20 07:17:04', '2025-12-01 08:12:22', 'I9LT3P', 0.00, 0, NULL, NULL),
 (58, 1, 'alta', 'alta@gmail.com', '2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824', 1, '2025-11-20 09:49:54', '2025-12-01 08:12:22', 'WU775U', 0.00, 0, NULL, NULL),
 (59, 1, 'talha', 'talha@gmail.com', '6c69d00baef0f8b17fdc6756e4bbc1d8d6e527b4f4e9d010817efa798ccb1e26', 1, '2025-11-20 13:36:00', '2025-12-01 08:12:22', 'DB4GK8', 0.00, 0, NULL, NULL),
-(60, 2, 'Basheer', 'basheer.mca@gmail.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 1, '2025-11-20 16:00:32', '2025-12-01 08:12:22', '96S4X2', 0.00, 0, NULL, NULL),
+(60, 2, 'Basheer', 'basheer.mca@gmail.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 1, '2025-11-20 16:00:32', '2025-12-05 11:12:40', '96S4X2', 0.00, 0, '01e37c2a-04ab-43c4-9e0f-c325223e29a2', '2025-12-05 12:12:41'),
 (61, 2, 'Basheer Ahmad', 'basheer.atxlearning@gmail.com', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 1, '2025-11-20 16:17:39', '2025-12-01 08:12:22', '1US551', 0.00, 0, NULL, NULL),
 (62, 1, 'naim', 'naim@gmail.com', '6c69d00baef0f8b17fdc6756e4bbc1d8d6e527b4f4e9d010817efa798ccb1e26', 1, '2025-11-21 09:15:45', '2025-12-01 08:12:22', 'S8L0YG', 0.00, 0, NULL, NULL),
 (63, 2, 'altaaa', 'altamash3328@gmail.com', '2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824', 1, '2025-11-21 11:24:30', '2025-12-01 08:12:22', 'B1YFZC', 0.00, 0, NULL, NULL),
@@ -1076,7 +1169,7 @@ INSERT INTO `users` (`user_id_1`, `role_id`, `name`, `email`, `password_hash`, `
 (69, 1, 'mohd', 'mohd@gmail.com', '6c69d00baef0f8b17fdc6756e4bbc1d8d6e527b4f4e9d010817efa798ccb1e26', 1, '2025-11-25 04:15:39', '2025-12-01 08:12:22', 'XN8VGC', 0.00, 0, NULL, NULL),
 (70, 1, 'print', 'print@gmail.com', '6c69d00baef0f8b17fdc6756e4bbc1d8d6e527b4f4e9d010817efa798ccb1e26', 1, '2025-11-25 04:16:36', '2025-12-01 08:12:22', 'CUYXG8', 0.00, 0, NULL, NULL),
 (71, 1, 'sagar', 'sagar@gmail.com', '6c69d00baef0f8b17fdc6756e4bbc1d8d6e527b4f4e9d010817efa798ccb1e26', 1, '2025-11-25 04:26:50', '2025-12-01 08:12:22', '1ZJGEE', 0.00, 0, NULL, NULL),
-(72, 1, 'ramu', 'ramu@gmail.com', '6c69d00baef0f8b17fdc6756e4bbc1d8d6e527b4f4e9d010817efa798ccb1e26', 1, '2025-11-25 04:28:33', '2025-12-01 08:12:22', 'KKVCX8', 0.00, 0, NULL, NULL),
+(72, 2, 'ramu', 'ramu@gmail.com', '6c69d00baef0f8b17fdc6756e4bbc1d8d6e527b4f4e9d010817efa798ccb1e26', 1, '2025-11-25 04:28:33', '2025-12-05 09:37:56', 'KKVCX8', 0.00, 0, NULL, NULL),
 (81, 1, 'arun', 'arun@gmail.com', '6c69d00baef0f8b17fdc6756e4bbc1d8d6e527b4f4e9d010817efa798ccb1e26', 1, '2025-11-26 10:47:54', '2025-12-01 08:12:22', 'LT2NPD', 0.00, 0, NULL, NULL),
 (82, 1, 'home', 'home@gmail.com', '6c69d00baef0f8b17fdc6756e4bbc1d8d6e527b4f4e9d010817efa798ccb1e26', 1, '2025-11-26 12:05:44', '2025-12-01 08:12:22', 'BTVM7V', 0.00, 0, NULL, NULL),
 (83, 1, 'dream', 'dream@gmail.com', '6c69d00baef0f8b17fdc6756e4bbc1d8d6e527b4f4e9d010817efa798ccb1e26', 1, '2025-11-26 12:16:10', '2025-12-01 08:12:22', 'V4ORGS', 0.00, 0, NULL, NULL),
@@ -1094,7 +1187,27 @@ INSERT INTO `users` (`user_id_1`, `role_id`, `name`, `email`, `password_hash`, `
 (95, 1, 'test', 'test@gmail.com', 'bee1c3c1f9df3df656185eb3db4887afef414f3eb292b252ec858c69986b6022', 1, '2025-12-03 06:57:22', '2025-12-03 07:19:11', 'R2OW73', 0.00, 0, NULL, NULL),
 (96, 1, 'fresh', 'fresh@gmail.com', '6c69d00baef0f8b17fdc6756e4bbc1d8d6e527b4f4e9d010817efa798ccb1e26', 1, '2025-12-03 07:16:52', '2025-12-03 07:16:52', 'JE30JB', 0.00, 0, NULL, NULL),
 (97, 2, 'test1', 'test1@gmail.com', '87924606b4131a8aceeeae8868531fbb9712aaa07a5d3a756b26ce0f5d6ca674', 1, '2025-12-03 08:51:10', '2025-12-03 09:32:04', 'WGBYKO', 0.00, 0, NULL, NULL),
-(98, 2, 'test2', 'test2@gmail.com', '87924606b4131a8aceeeae8868531fbb9712aaa07a5d3a756b26ce0f5d6ca674', 1, '2025-12-03 08:58:08', '2025-12-03 09:50:14', 'YFY7XQ', 0.00, 0, NULL, NULL);
+(98, 2, 'test2', 'test2@gmail.com', '87924606b4131a8aceeeae8868531fbb9712aaa07a5d3a756b26ce0f5d6ca674', 1, '2025-12-03 08:58:08', '2025-12-03 09:50:14', 'YFY7XQ', 0.00, 0, NULL, NULL),
+(99, 1, 'gsdfg', 'asd@gmail', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 1, '2025-12-04 15:13:26', '2025-12-04 15:13:26', '7INFY6', 0.00, 0, NULL, NULL),
+(100, 1, 'd', 'd@gmail.com', '1e4c3b698efe0f0939e7a9e37400bacad15e53a41be002f3af96672b43d0a44a', 1, '2025-12-05 06:04:37', '2025-12-05 06:04:37', 'F6BTUH', 0.00, 0, NULL, NULL),
+(101, 1, 'asdf', 'asd@ggfd', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', 1, '2025-12-05 12:24:36', '2025-12-05 12:24:36', 'XLT3SB', 0.00, 0, NULL, NULL),
+(102, 1, 'te', 'te@gmail.com', 'c7ae2aa725c401ed10f2894d9730e2df59aadc64c86a31ff5d80ed540043cf5a', 1, '2025-12-08 06:50:11', '2025-12-08 06:50:11', 'OA3D9Y', 0.00, 0, NULL, NULL),
+(104, 1, 'te1', 'te1@gmail.com', 'c7ae2aa725c401ed10f2894d9730e2df59aadc64c86a31ff5d80ed540043cf5a', 1, '2025-12-08 06:51:22', '2025-12-08 06:51:22', 'Y815EA', 0.00, 0, NULL, NULL),
+(105, 1, 'te2', 'te2@gmail.com', '86efb6e45aac1df38d5f239a46efe983a8753184cab0dfa5c22dc1cd58d96f77', 1, '2025-12-08 07:06:34', '2025-12-08 07:06:34', 'I62KEY', 0.00, 0, NULL, NULL),
+(106, 1, 'babatillu', 'babatillu@gmailcom', '6c69d00baef0f8b17fdc6756e4bbc1d8d6e527b4f4e9d010817efa798ccb1e26', 1, '2025-12-08 07:15:12', '2025-12-08 07:15:12', 'TD48HI', 0.00, 0, NULL, NULL),
+(107, 1, 'tillu', 'tillu@gmail.com', '6c69d00baef0f8b17fdc6756e4bbc1d8d6e527b4f4e9d010817efa798ccb1e26', 1, '2025-12-08 07:21:15', '2025-12-08 07:21:15', 'QX4IZ3', 0.00, 0, NULL, NULL),
+(109, 1, 'te2', 'te3@gmail.com', '86efb6e45aac1df38d5f239a46efe983a8753184cab0dfa5c22dc1cd58d96f77', 1, '2025-12-08 07:30:28', '2025-12-08 07:30:28', '3R8OBC', 0.00, 0, NULL, NULL),
+(110, 1, 'baba', 'baba@gmailcom', '6c69d00baef0f8b17fdc6756e4bbc1d8d6e527b4f4e9d010817efa798ccb1e26', 1, '2025-12-08 07:33:48', '2025-12-08 07:33:48', 'ELG69K', 0.00, 0, NULL, NULL),
+(111, 1, 'chacha', 'chacha@gmail.com', '6c69d00baef0f8b17fdc6756e4bbc1d8d6e527b4f4e9d010817efa798ccb1e26', 1, '2025-12-08 07:36:12', '2025-12-08 07:36:12', 'QSEEK9', 0.00, 0, NULL, NULL),
+(112, 1, 'chaudhary', 'chaudhary@gmail.com', '6c69d00baef0f8b17fdc6756e4bbc1d8d6e527b4f4e9d010817efa798ccb1e26', 1, '2025-12-08 07:37:32', '2025-12-08 07:37:32', '5E9U5Z', 0.00, 0, NULL, NULL),
+(113, 1, 'rajveer', 'rajveer@gmailcom', '6c69d00baef0f8b17fdc6756e4bbc1d8d6e527b4f4e9d010817efa798ccb1e26', 1, '2025-12-08 10:25:09', '2025-12-08 10:25:09', '62LE1O', 0.00, 0, NULL, NULL),
+(114, 1, 'rajveer', 'raj@gmail.com', '6c69d00baef0f8b17fdc6756e4bbc1d8d6e527b4f4e9d010817efa798ccb1e26', 1, '2025-12-08 10:25:54', '2025-12-08 10:25:54', 'JZ0TTD', 0.00, 0, NULL, NULL),
+(115, 1, 'rajveer', 'rajveer@gmail.com', '6c69d00baef0f8b17fdc6756e4bbc1d8d6e527b4f4e9d010817efa798ccb1e26', 1, '2025-12-08 10:46:46', '2025-12-08 10:46:46', '1RFK9E', 0.00, 0, NULL, NULL),
+(121, 1, 'map', 'map@gmail.com', '6c69d00baef0f8b17fdc6756e4bbc1d8d6e527b4f4e9d010817efa798ccb1e26', 1, '2025-12-08 11:08:59', '2025-12-08 11:08:59', '11SL98', 0.00, 0, NULL, NULL),
+(124, 1, 'royal', 'royal@gmail.com', '6c69d00baef0f8b17fdc6756e4bbc1d8d6e527b4f4e9d010817efa798ccb1e26', 1, '2025-12-08 11:16:05', '2025-12-08 11:16:05', 'HXYQGS', 0.00, 0, NULL, NULL),
+(125, 1, 'glass', 'glass@gmail.com', '6c69d00baef0f8b17fdc6756e4bbc1d8d6e527b4f4e9d010817efa798ccb1e26', 1, '2025-12-08 11:37:54', '2025-12-08 11:37:54', 'MG7CV1', 0.00, 0, NULL, NULL),
+(126, 1, 'infinix', 'infinix@gmail.com', '6c69d00baef0f8b17fdc6756e4bbc1d8d6e527b4f4e9d010817efa798ccb1e26', 1, '2025-12-08 11:52:53', '2025-12-08 11:52:53', '1ZMW9E', 0.00, 0, NULL, NULL),
+(127, 1, 'wolf', 'wolf@gmail.com', '6c69d00baef0f8b17fdc6756e4bbc1d8d6e527b4f4e9d010817efa798ccb1e26', 1, '2025-12-08 12:04:08', '2025-12-08 12:04:08', 'SZ9033', 0.00, 0, NULL, NULL);
 
 --
 -- Triggers `users`
@@ -1144,6 +1257,13 @@ ALTER TABLE `agents`
   ADD KEY `idx_user_id` (`user_id`),
   ADD KEY `idx_company_id` (`company_id`),
   ADD KEY `idx_agent_status` (`agent_status`);
+
+--
+-- Indexes for table `agent_documents`
+--
+ALTER TABLE `agent_documents`
+  ADD PRIMARY KEY (`document_id`),
+  ADD KEY `agent_id` (`agent_id`);
 
 --
 -- Indexes for table `appointments`
@@ -1340,13 +1460,19 @@ ALTER TABLE `activity_logs`
 -- AUTO_INCREMENT for table `agents`
 --
 ALTER TABLE `agents`
-  MODIFY `agent_id_1` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
+  MODIFY `agent_id_1` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
+
+--
+-- AUTO_INCREMENT for table `agent_documents`
+--
+ALTER TABLE `agent_documents`
+  MODIFY `document_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `appointments`
 --
 ALTER TABLE `appointments`
-  MODIFY `appointment_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
+  MODIFY `appointment_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- AUTO_INCREMENT for table `bookings`
@@ -1358,7 +1484,7 @@ ALTER TABLE `bookings`
 -- AUTO_INCREMENT for table `chat_messages`
 --
 ALTER TABLE `chat_messages`
-  MODIFY `message_id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
+  MODIFY `message_id` bigint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
 
 --
 -- AUTO_INCREMENT for table `comment`
@@ -1370,13 +1496,13 @@ ALTER TABLE `comment`
 -- AUTO_INCREMENT for table `companies`
 --
 ALTER TABLE `companies`
-  MODIFY `company_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `company_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
 -- AUTO_INCREMENT for table `conversations`
 --
 ALTER TABLE `conversations`
-  MODIFY `conversation_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `conversation_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `credit_plans`
@@ -1388,7 +1514,7 @@ ALTER TABLE `credit_plans`
 -- AUTO_INCREMENT for table `favorites`
 --
 ALTER TABLE `favorites`
-  MODIFY `favorite_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=268;
+  MODIFY `favorite_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=273;
 
 --
 -- AUTO_INCREMENT for table `invoices`
@@ -1400,19 +1526,19 @@ ALTER TABLE `invoices`
 -- AUTO_INCREMENT for table `members`
 --
 ALTER TABLE `members`
-  MODIFY `member_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `member_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
 
 --
 -- AUTO_INCREMENT for table `properties`
 --
 ALTER TABLE `properties`
-  MODIFY `property_id_1` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `property_id_1` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 
 --
 -- AUTO_INCREMENT for table `property_images`
 --
 ALTER TABLE `property_images`
-  MODIFY `image_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=244;
+  MODIFY `image_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=307;
 
 --
 -- AUTO_INCREMENT for table `ratings`
@@ -1424,7 +1550,7 @@ ALTER TABLE `ratings`
 -- AUTO_INCREMENT for table `reviews`
 --
 ALTER TABLE `reviews`
-  MODIFY `review_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `review_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT for table `roles`
@@ -1448,13 +1574,13 @@ ALTER TABLE `ticket`
 -- AUTO_INCREMENT for table `transactions`
 --
 ALTER TABLE `transactions`
-  MODIFY `transaction_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+  MODIFY `transaction_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id_1` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99;
+  MODIFY `user_id_1` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=128;
 
 --
 -- Constraints for dumped tables
@@ -1465,6 +1591,12 @@ ALTER TABLE `users`
 --
 ALTER TABLE `agents`
   ADD CONSTRAINT `agents_ibfk_2` FOREIGN KEY (`company_id`) REFERENCES `companies` (`company_id`) ON DELETE SET NULL;
+
+--
+-- Constraints for table `agent_documents`
+--
+ALTER TABLE `agent_documents`
+  ADD CONSTRAINT `agent_documents_ibfk_1` FOREIGN KEY (`agent_id`) REFERENCES `agents` (`agent_id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `comment`

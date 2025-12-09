@@ -36,7 +36,7 @@ def set_free_posts():
     except Exception as e:
         if con: con.rollback()
         logging.error(f"Error in /admin/set_free_posts: {e}", exc_info=True)
-        return jsonify(error="An internal server error occurred"), 500
+        return jsonify(error="please check all the details before Submitting"), 500
     finally:
         if cursor: cursor.close()
         if con: con.close()
@@ -98,7 +98,7 @@ def create_credit_plan():
     except Exception as e:
         if con: con.rollback()
         logging.error(f"Error in /admin/create_credit_plan: {e}", exc_info=True)
-        return jsonify(error="An internal server error occurred"), 500
+        return jsonify(error="please check all the details before Submitting"), 500
     finally:
         if cursor: cursor.close()
         if con: con.close()
@@ -148,7 +148,7 @@ def update_credit_plan():
     except Exception as e:
         if con: con.rollback()
         logging.error(f"Error in /admin/update_credit_plan: {e}", exc_info=True)
-        return jsonify(error="An internal server error occurred"), 500
+        return jsonify(error="please check all the details before Submitting"), 500
     finally:
         if cursor: cursor.close()
         if con: con.close()
@@ -188,7 +188,7 @@ def get_all_credit_plans():
 
     except Exception as e:
         logging.error(f"Error in /admin/get_all_credit_plans: {e}", exc_info=True)
-        return jsonify(error="An internal server error occurred"), 500
+        return jsonify(error="please check all the details before Submitting"), 500
     finally:
         if cursor: cursor.close()
         if con: con.close()
@@ -223,7 +223,7 @@ def pending_agent():
     except Exception as e:
         if con: con.rollback()
         logging.error(f"Error in /admin/update_credit_plan: {e}", exc_info=True)
-        return jsonify(error="An internal server error occurred"), 500
+        return jsonify(error="please check all the details before Submitting"), 500
     finally:
         if cursor: cursor.close()
         if con: con.close()
@@ -266,7 +266,7 @@ def change_status_agent():
     except Exception as e:
         if con: con.rollback()
         logging.error(f"Error in /admin/update_credit_plan: {e}", exc_info=True)
-        return jsonify(error="An internal server error occurred"), 500
+        return jsonify(error="please check all the details before Submitting"), 500
     finally:
         if cursor: cursor.close()
         if con: con.close()

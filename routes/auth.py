@@ -87,7 +87,7 @@ def User():
         if con:
             con.rollback()
         logging.error(f"Error in /users: {e}", exc_info=True)
-        return jsonify(error="An internal server error occurred"), 500
+        return jsonify(error="There is anissue creating your account please contact helpdesk"), 500
 
     finally:
         # 4. This is CRITICAL. It ensures the connection is always closed for both GET and POST.
@@ -140,6 +140,7 @@ def login():
         if user:
             # Login successful
             logging.info(f"Successful login for user_id: {user}")
+            print(user)
             return jsonify(
                 message="success",
                 
@@ -151,7 +152,7 @@ def login():
 
     except Exception as e:
         logging.error(f"Error in /login: {e}", exc_info=True)
-        return jsonify(error="An internal server error occurred"), 500
+        return jsonify(error="please check all the details before Submitting"), 500
 
     finally:
         # 6. FIX: Added a finally block to always close the connection
@@ -250,7 +251,7 @@ def company():
         if con:
             con.rollback()
         logging.error(f"Error in /company: {e}", exc_info=True)
-        return jsonify(error="An internal server error occurred"), 500
+        return jsonify(error="please check all the details before Submitting"), 500
 
     finally:
         if con:
@@ -263,8 +264,7 @@ def company():
 @auth_bp.route("/agent", methods=["POST", "GET"])
 def agents():
     """
-    Handles creating a new agent profile (and assigning free posts)
-    or updating an existing agent profile.
+    Handles creating/updating agent profile AND uploading multiple documents.
     """
     con = None
     cursor = None
@@ -272,22 +272,21 @@ def agents():
         if request.method == "POST":
             user_id = request.form.get("user_id")
             
-            print(request.form)
+            # Debugging print
+            print("Received Form Data:", request.form)
 
             if not user_id:
                 return jsonify(error="user_id is a required field"), 400
-            
-            
 
             con = getConnection()
             cursor = con.cursor(pymysql.cursors.DictCursor)
 
-            # First, check if an agent profile already exists for this user_id
+            # 1. Determine if New or Existing Agent
             cursor.execute("SELECT agent_id FROM agents WHERE user_id = %s", (user_id,))
             agent_record = cursor.fetchone()
             is_new_agent = agent_record is None
 
-            # Handle file upload (this logic is the same for both create and update)
+            # 2. Handle Profile Picture (Single File)
             image_url, file_to_save, unique_filename, save_path = None, None, None, None
             if 'image' in request.files:
                 file = request.files['image']
@@ -297,35 +296,21 @@ def agents():
                     save_path = os.path.join(current_app.config['UPLOAD_FOLDER'], unique_filename)
                     file_to_save = file
             
-            # If no new file is uploaded on an update, keep the old one.
             if not is_new_agent and not file_to_save:
                 image_url = request.form.get("existing_profile_pic_url")
 
-
-# --- FULLY CORRECTED FORM DATA BUILDER ---
-
-# Gather all form data into a dictionary
+            # 3. Build Agent Data Dictionary
             form_data = {
                 "user_id": user_id,
                 "agent_type": request.form.get("agent_type"),
                 "company_id": request.form.get("company_id"),
                 "company_position": request.form.get("company_position"),
-                # This might be optional, but use the correct name from the form if it exists
                 "company_license_number": request.form.get("company_licence"), 
                 "personal_license_number": request.form.get("personal_license_number"),
-
-                # FIX: Correct the typo to match the form field name
                 "license_issuing_authority": request.form.get("license_issuing_authority"), 
-
                 "country": request.form.get("country"),
                 "state": request.form.get("region"),
-
-                # FIX: Decide what 'city' should be. If the form doesn't send it, it will be None.
-                # If 'address_city' is supposed to be the city, you can do this:
-                # "city": request.form.get("address_city"),
-                # For now, we assume 'city' might be a separate, optional field.
                 "city": request.form.get("city"), 
-
                 "address_city": request.form.get("address_city"),
                 "address_postal_code": request.form.get("address_postal_code"),
                 "contact_number": request.form.get("contact"),
@@ -341,47 +326,84 @@ def agents():
                 "profile_picture": image_url
             }
 
-            print(form_data)
-
+            # 4. Insert or Update Agent
             if is_new_agent:
-                # --- THIS IS AN INSERT FOR A NEW AGENT ---
-                # Fetch the default number of free posts from system_settings
+                # Fetch default free posts
                 cursor.execute("SELECT setting_value FROM system_settings WHERE setting_key = 'default_free_posts'")
                 settings = cursor.fetchone()
                 free_posts = int(settings['setting_value']) if settings else 1
                 form_data['free_posts_remaining'] = free_posts
 
-                # Build the INSERT query dynamically
                 columns = ', '.join(form_data.keys())
                 placeholders = ', '.join([f"%({key})s" for key in form_data.keys()])
                 query = f"INSERT INTO agents ({columns}) VALUES ({placeholders})"
-                
                 message = "Agent profile created successfully."
                 status_code = 201
             else:
-                # --- THIS IS AN UPDATE FOR AN EXISTING AGENT ---
-                # We do not update free_posts_remaining on an edit
                 set_clause = ', '.join([f"{key}=%({key})s" for key in form_data.keys() if key != 'user_id'])
                 query = f"UPDATE agents SET {set_clause} WHERE user_id = %(user_id)s"
-                
                 message = "Agent profile updated successfully."
                 status_code = 200
 
-            # Execute the chosen query (either INSERT or UPDATE)
+            # Execute Agent Query
             cursor.execute(query, form_data)
             
-            # Save the file only after a successful DB operation
+            # Save profile picture if exists
             if file_to_save:
                 file_to_save.save(save_path)
+
+            # --- CRITICAL FIX START ---
+            # Instead of relying on cursor.lastrowid (which can be 0 or unreliable in complex transactions),
+            # we explicitly fetch the agent_id based on the user_id (which is unique) to ensure we have the correct ID.
+            if is_new_agent:
+                cursor.execute("SELECT agent_id FROM agents WHERE user_id = %s", (user_id,))
+                new_agent_row = cursor.fetchone()
+                if not new_agent_row:
+                    raise Exception("Failed to retrieve Agent ID after insertion.")
+                agent_id = new_agent_row['agent_id']
+            else:
+                agent_id = agent_record['agent_id']
             
-            # Determine the agent_id to return
-            agent_id = agent_record['agent_id'] if agent_record else cursor.lastrowid
+            print(f"DEBUG: Using Agent ID: {agent_id}")
+            # --- CRITICAL FIX END ---
+
+            # ============================================================
+            # 5. HANDLE MULTIPLE DOCUMENT UPLOADS
+            # ============================================================
+            uploaded_docs = request.files.getlist('documents')
+            doc_names = request.form.getlist('document_names')
+
+            if uploaded_docs:
+                for i, doc in enumerate(uploaded_docs):
+                    if doc and doc.filename != '':
+                        original_name = secure_filename(doc.filename)
+                        unique_doc_name = f"{agent_id}_{uuid.uuid4().hex[:8]}_{original_name}"
+                        
+                        # Ensure Upload Folder Exists
+                        upload_folder = current_app.config['UPLOAD_FOLDER']
+                        if not os.path.exists(upload_folder):
+                            os.makedirs(upload_folder)
+
+                        doc_save_path = os.path.join(upload_folder, unique_doc_name)
+                        doc_url = f"/uploads/{unique_doc_name}"
+
+                        # Save file
+                        doc.save(doc_save_path)
+
+                        # Determine display name
+                        display_name = doc_names[i] if i < len(doc_names) and doc_names[i].strip() != "" else original_name
+
+                        # Insert into DB
+                        doc_query = """
+                            INSERT INTO agent_documents (agent_id, file_name, file_url) 
+                            VALUES (%s, %s, %s)
+                        """
+                        cursor.execute(doc_query, (agent_id, display_name, doc_url))
+            
             con.commit()
-            
             return jsonify(message=message, agent_id=agent_id), status_code
 
         elif request.method == "GET":
-            # GET logic is unchanged
             con = getConnection()
             cursor = con.cursor(pymysql.cursors.DictCursor)
             cursor.execute("SELECT * FROM agents")
@@ -391,10 +413,17 @@ def agents():
     except Exception as e:
         if con: con.rollback()
         logging.error(f"Error in /agent: {e}", exc_info=True)
-        return jsonify(error="An internal server error occurred"), 500
+        return jsonify(error=f"please check all the details before Submitting: "), 500
     finally:
         if cursor: cursor.close()
         if con: con.close()
+
+
+
+
+
+
+
 
 @auth_bp.route("/agentstatus", methods=["POST"])
 def update_agent_status():
@@ -522,7 +551,7 @@ def members():
         if con:
             con.rollback() # Rollback any partial changes from the POST
         logging.error(f"Error in /member: {e}", exc_info=True)
-        return jsonify(error="An internal server error occurred"), 500
+        return jsonify(error="please check all the details before Submitting"), 500
 
     finally:
         # This is CRITICAL. It ensures the connection is always closed.
@@ -576,7 +605,7 @@ def onlyMember():
 
     except Exception as e:
         logging.error(f"Error in /getmember: {e}", exc_info=True)
-        return jsonify(error="An internal server error occurred"), 500
+        return jsonify(error="please check all the details before Submitting"), 500
 
     finally:
         # 5. Always ensure the connection is closed
@@ -637,7 +666,7 @@ def agentId():
 
     except Exception as e:
         logging.error(f"Error in /agentid: {e}", exc_info=True)
-        return jsonify(error="An internal server error occurred"), 500
+        return jsonify(error="please check all the details before Submitting"), 500
 
     finally:
         # 5. Always ensure the connection is closed
@@ -789,7 +818,7 @@ def create_property():
     except Exception as e:
         if con: con.rollback()
         logging.error(f"Error in /sendproperties: {e}", exc_info=True)
-        return jsonify(error="An internal server error occurred"), 500
+        return jsonify(error="please check all the details before Submitting"), 500
     finally:
         if cursor: cursor.close()
         if con: con.close()
@@ -844,7 +873,7 @@ def change_password():
     except Exception as e:
         if con: con.rollback()
         logging.error(f"Error in /changePassword: {e}", exc_info=True)
-        return jsonify(error="An internal server error occurred"), 500
+        return jsonify(error="please check all the details before Submitting"), 500
     finally:
         if cursor: cursor.close()
         if con: con.close()
@@ -988,7 +1017,7 @@ def getProperty():
 
     except Exception as e:
         logging.error(f"Error in /getproperties: {e}", exc_info=True)
-        return jsonify(error="An internal server error occurred"), 500
+        return jsonify(error="please check all the details before Submitting"), 500
     finally:
         if cursor: cursor.close()
         if con: con.close()
@@ -1046,7 +1075,7 @@ def favourite():
         if con:
             con.rollback()
         logging.error(f"Error in /favourite: {e}", exc_info=True)
-        return jsonify(error="An internal server error occurred"), 500
+        return jsonify(error="please check all the details before Submitting"), 500
 
     finally:
         # 5. This is CRITICAL to prevent lock timeouts.
@@ -1115,7 +1144,7 @@ def getFavourite():
 
     except Exception as e:
         logging.error(f"Error in /getfavourite: {e}", exc_info=True)
-        return jsonify(error="An internal server error occurred"), 500
+        return jsonify(error="please check all the details before Submitting"), 500
 
     finally:
         if cursor:
@@ -1167,7 +1196,7 @@ def deleteFavourite():
         if con:
             con.rollback()
         logging.error(f"Error in /deletefavourite: {e}", exc_info=True)
-        return jsonify(error="An internal server error occurred"), 500
+        return jsonify(error="please check all the details before Submitting"), 500
 
     finally:
         # 5. Always ensure the connection is closed
@@ -1257,7 +1286,7 @@ def detailProperty():
     except Exception as e:
         # print(f"An error occurred: {e}") 
         logging.error(f"Error in /detailproperty: {e}", exc_info=True)
-        return jsonify(error="An internal server error occurred"), 500
+        return jsonify(error="please check all the details before Submitting"), 500
     
     finally:
         if cursor: cursor.close()
@@ -1413,7 +1442,7 @@ def contact_agent():
 
     except Exception as e:
         logging.error(f"Error in /contact_agent: {e}", exc_info=True)
-        return jsonify(error="An internal server error occurred while sending your message."), 500
+        return jsonify(error="please check all the details before Submitting while sending your message."), 500
     finally:
         if cursor: cursor.close()
         if con: con.close()
@@ -1487,7 +1516,7 @@ def update_member():
     except Exception as e:
         if con: con.rollback()
         logging.error(f"Error in /update_member: {e}", exc_info=True)
-        return jsonify(error="An internal server error occurred"), 500
+        return jsonify(error="please check all the details before Submitting"), 500
     finally:
         if cursor: cursor.close()
         if con: con.close()
@@ -1588,7 +1617,7 @@ def update_agent():
     except Exception as e:
         if con: con.rollback()
         logging.error(f"Error in /update_agent: {e}", exc_info=True)
-        return jsonify(error="An internal server error occurred"), 500
+        return jsonify(error="please check all the details before Submitting"), 500
     finally:
         if cursor: cursor.close()
         if con: con.close()
@@ -1687,7 +1716,7 @@ def search_properties():
         return jsonify(error="Invalid number format for a filter parameter."), 400
     except Exception as e:
         logging.error(f"Error in /properties/search: {e}", exc_info=True)
-        return jsonify(error="An internal server error occurred"), 500
+        return jsonify(error="please check all the details before Submitting"), 500
     finally:
         if cursor: cursor.close()
         if con: con.close()
@@ -1818,7 +1847,7 @@ def forgot_password():
     except Exception as e:
         if con: con.rollback()
         logging.error(f"Error in /forgot-password: {e}", exc_info=True)
-        return jsonify(error="An internal server error occurred"), 500
+        return jsonify(error="please check all the details before Submitting"), 500
     finally:
         if cursor: cursor.close()
         if con: con.close()
@@ -1946,7 +1975,7 @@ def reset_password_process():
     except Exception as e:
         if con: con.rollback()
         logging.error(f"Error in /reset-password: {e}", exc_info=True)
-        return jsonify(error="An internal server error occurred"), 500
+        return jsonify(error="please check all the details before Submitting"), 500
     finally:
         if cursor: cursor.close()
         if con: con.close()

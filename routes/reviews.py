@@ -84,7 +84,7 @@ def submit_review():
     except Exception as e:
         if con: con.rollback()
         logging.error(f"Error in /submit_review: {e}", exc_info=True)
-        return jsonify(error="An internal server error occurred"), 500
+        return jsonify(error="please check all the details before Submitting"), 500
     finally:
         if cursor: cursor.close()
         if con: con.close()
@@ -133,7 +133,7 @@ def get_reviews():
 
     except Exception as e:
         logging.error(f"Error in /get_reviews: {e}", exc_info=True)
-        return jsonify(error="An internal server error occurred"), 500
+        return jsonify(error="please check all the details before Submitting"), 500
     finally:
         if cursor: cursor.close()
         if con: con.close()

@@ -1,7 +1,10 @@
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request, jsonify , current_app
 from app import getConnection
+from werkzeug.utils import secure_filename
 import pymysql.cursors
 import logging
+import uuid
+import os
 from datetime import datetime
 
 # It's good practice to have your Blueprint and logging setup
@@ -47,7 +50,7 @@ def dashboard():
         return jsonify(message="Agent dashboard data retrieved successfully", dashboard1=result), 200 # Renamed 'dashboard1' to 'dashboard'
     except Exception as e:
         logging.error(f"An error occurred in /agent_dashboard: {e}", exc_info=True)
-        return jsonify(error="An internal server error occurred"), 500
+        return jsonify(error="please check all the details before Submitting"), 500
     finally:
         if cursor: cursor.close()
         if con: con.close()
@@ -89,7 +92,7 @@ def get_daily_appointments():
         return jsonify(message=f"Successfully retrieved appointments for {appointmentDate}", appointments=appointments), 200
     except Exception as e:
         logging.error(f"An error occurred in /daily_appointments: {e}", exc_info=True)
-        return jsonify(error="An internal server error occurred"), 500
+        return jsonify(error="please check all the details before Submitting"), 500
     finally:
         if cursor: cursor.close()
         if con: con.close()
@@ -146,7 +149,7 @@ def update_appointment_status():
     except Exception as e:
         if con: con.rollback()
         logging.error(f"Error in /update_appointment_status: {e}", exc_info=True)
-        return jsonify(error="An internal server error occurred"), 500
+        return jsonify(error="please check all the details before Submitting"), 500
     finally:
         if cursor: cursor.close()
         if con: con.close()
@@ -185,7 +188,7 @@ def get_agent_appointments():
         return jsonify(appointments=appointments), 200
     except Exception as e:
         logging.error(f"Error in /agent_appointments: {e}", exc_info=True)
-        return jsonify(error="An internal server error occurred"), 500
+        return jsonify(error="please check all the details before Submitting"), 500
     finally:
         if cursor: cursor.close()
         if con: con.close()
@@ -244,7 +247,7 @@ def get_agent_properties():
 
     except Exception as e:
         logging.error(f"Error in /my_properties: {e}", exc_info=True)
-        return jsonify(error="An internal server error occurred"), 500
+        return jsonify(error="please check all the details before Submitting"), 500
     finally:
         if cursor: cursor.close()
         if con: con.close()
@@ -254,70 +257,92 @@ def get_agent_properties():
 
 @agent_bp.route("/update_property", methods=["POST"])
 def update_property():
+    """
+    Updates an existing property.
+    Expects 'multipart/form-data'.
+    """
     con = None
     cursor = None
     try:
-        data = request.get_json()
-        agent_id = data.get("agent_id")
-        property_id = data.get("property_id")
-        updates = data.get("updates")
+        # 1. SWITCH TO FORM DATA
+        agent_id = request.form.get("agent_id")
+        property_id = request.form.get("property_id")
 
-        if not all([agent_id, property_id, updates]):
-            return jsonify(error="agent_id, property_id, and 'updates' are required"), 400
+        if not agent_id or not property_id:
+            return jsonify(error="agent_id and property_id are required"), 400
 
         con = getConnection()
         cursor = con.cursor()
 
-        # 1. SECURITY PRE-CHECK (Crucial Fix)
-        # Check if property exists and belongs to agent BEFORE trying to update.
-        # This prevents 404s when data hasn't changed (rowcount=0) and secures image-only updates.
+        # 2. SECURITY CHECK
         check_query = "SELECT 1 FROM properties WHERE property_id = %s AND agent_id = %s"
         cursor.execute(check_query, (property_id, agent_id))
         if cursor.fetchone() is None:
-            return jsonify(error="Property not found or you do not have permission to edit it"), 404
+            return jsonify(error="Property not found or permission denied"), 404
 
-        # 2. IMAGE HANDLING
-        new_images = None
-        if 'images' in updates:
-            if not isinstance(updates['images'], list):
-                return jsonify(error="'images' must be an array of strings"), 400
-            new_images = updates['images']
-            del updates['images']
-
-        # 3. UPDATE PROPERTY DETAILS
-        # ADDED MISSING FIELDS based on your input data
+        # 3. UPDATE TEXT FIELDS
+        # Note: 'unit' is removed from here and handled manually below to map to 'price_unit'
         allowed_fields = [
             "title", "description", "price", "address", "city", "state", "country", 
             "zip_code", "property_type", "features", "bedrooms", "bathrooms", "rooms", 
-            "area_sqft", "latitude", "longitude", "status",
-            # New fields added below:
-            "neighborhood", "garage_size", "land_area", 
-            "year_built", "garages", "video_url", "private_note"
+            "area_sqft", "latitude", "longitude", "status", "neighborhood", 
+            "garage_size", "land_area", "year_built", "garages", "video_url", "private_note"
+        ]
+
+        numeric_fields = [
+            "price", "bedrooms", "bathrooms", "rooms", "area_sqft", 
+            "garages", "year_built", "garage_size", "land_area", 
+            "latitude", "longitude"
         ]
         
         set_parts = []
         values = []
-        
-        if updates:
-            for key, value in updates.items():
-                if key in allowed_fields:
-                    set_parts.append(f"{key} = %s")
-                    values.append(value)
-            
-            if set_parts:
-                update_query = f"UPDATE properties SET {', '.join(set_parts)} WHERE property_id = %s AND agent_id = %s"
-                update_values = values + [property_id, agent_id]
-                cursor.execute(update_query, tuple(update_values))
-                # We removed the rowcount check here because the pre-check handled auth,
-                # and we don't want to error out just because data didn't change.
 
-        # 4. EXECUTE IMAGE UPDATES
-        if new_images is not None:
-            cursor.execute("DELETE FROM property_images WHERE property_id = %s", (property_id,))
-            if new_images:
-                insert_image_query = "INSERT INTO property_images (property_id, image_url) VALUES (%s, %s)"
-                image_values = [(property_id, url) for url in new_images]
-                cursor.executemany(insert_image_query, image_values)
+        for key, value in request.form.items():
+            # Special Handling: Map frontend 'unit' to database 'price_unit'
+            if key == "unit":
+                set_parts.append("price_unit = %s")
+                values.append(value)
+                continue
+
+            if key in allowed_fields:
+                # Handle numeric fields (empty string -> 0)
+                if key in numeric_fields:
+                    if value == "" or value == "undefined" or value is None:
+                        value = 0
+                
+                set_parts.append(f"{key} = %s")
+                values.append(value)
+        
+        if set_parts:
+            update_query = f"UPDATE properties SET {', '.join(set_parts)} WHERE property_id = %s AND agent_id = %s"
+            update_values = values + [property_id, agent_id]
+            cursor.execute(update_query, tuple(update_values))
+
+        # 4. HANDLE NEW IMAGE UPLOADS
+        uploaded_files = request.files.getlist("images")
+        saved_image_names = []
+
+        if uploaded_files:
+            for image_file in uploaded_files:
+                if image_file and image_file.filename != '':
+                    filename = secure_filename(image_file.filename)
+                    unique_filename = f"{uuid.uuid4().hex}_{filename}"
+                    
+                    # Ensure upload folder exists
+                    upload_folder = current_app.config.get('UPLOAD_FOLDER', 'uploads')
+                    if not os.path.exists(upload_folder):
+                        os.makedirs(upload_folder)
+
+                    save_path = os.path.join(upload_folder, unique_filename)
+                    image_file.save(save_path)
+                    saved_image_names.append(unique_filename)
+
+        # 5. INSERT NEW IMAGES INTO DB
+        if saved_image_names:
+            insert_image_query = "INSERT INTO property_images (property_id, image_url) VALUES (%s, %s)"
+            image_values = [(property_id, name) for name in saved_image_names]
+            cursor.executemany(insert_image_query, image_values)
 
         con.commit()
         return jsonify(message="Property updated successfully"), 200
@@ -325,10 +350,98 @@ def update_property():
     except Exception as e:
         if con: con.rollback()
         logging.error(f"Error in /update_property: {e}", exc_info=True)
-        return jsonify(error="An internal server error occurred"), 500
+        return jsonify(error=f"please check all the details before Submitting: {str(e)}"), 500
     finally:
         if cursor: cursor.close()
         if con: con.close()
+
+
+
+
+
+@agent_bp.route("/delete_property_image", methods=["POST"])
+def delete_property_image():
+    """
+    Deletes a specific image from a property.
+    """
+    con = None
+    cursor = None
+    try:
+        data = request.get_json()
+        agent_id = data.get("agent_id")
+        property_id = data.get("property_id")
+        image_name = data.get("image_name")
+
+        if not all([agent_id, property_id, image_name]):
+            return jsonify(error="Missing required fields"), 400
+
+        con = getConnection()
+        cursor = con.cursor()
+
+        # 1. SECURITY: Verify this property belongs to this agent
+        check_query = "SELECT 1 FROM properties WHERE property_id = %s AND agent_id = %s"
+        cursor.execute(check_query, (property_id, agent_id))
+        if cursor.fetchone() is None:
+            return jsonify(error="Permission denied"), 403
+
+        # 2. DELETE FROM DATABASE
+        delete_query = "DELETE FROM property_images WHERE property_id = %s AND image_url = %s"
+        cursor.execute(delete_query, (property_id, image_name))
+        
+        if cursor.rowcount == 0:
+            return jsonify(error="Image not found in database"), 404
+
+        # 3. DELETE FROM DISK (Cleanup)
+        try:
+            upload_folder = current_app.config.get('UPLOAD_FOLDER', 'uploads')
+            file_path = os.path.join(upload_folder, image_name)
+            if os.path.exists(file_path):
+                os.remove(file_path)
+                logging.info(f"Deleted file: {file_path}")
+        except Exception as file_error:
+            # We don't stop the request if file delete fails, just log it
+            logging.error(f"Error deleting file from disk: {file_error}")
+
+        con.commit()
+        return jsonify(message="Image deleted successfully"), 200
+
+    except Exception as e:
+        if con: con.rollback()
+        logging.error(f"Error in /delete_property_image: {e}", exc_info=True)
+        return jsonify(error=str(e)), 500
+    finally:
+        if cursor: cursor.close()
+        if con: con.close()
+
+
+
+
+
+
+
+@agent_bp.route("/get_form",methods=["POST"])
+def get_form():
+    data = request.get_json()
+    agent_id = data.get("agent_id")
+    con =None
+    cursor = None
+    if not (agent_id):
+        return jsonify(message = "This person has not filled any form")
+    
+    con = getConnection()
+    cursor = con.cursor()
+    query = "select * from agents where agent_id like %s"
+    cursor.execute(query,agent_id)
+    d = cursor.fetchall()
+    return jsonify(form_data = d)
+
+
+
+
+
+
+
+
 
 
 @agent_bp.route("/delete_property", methods=["POST"])
@@ -358,7 +471,7 @@ def delete_property():
     except Exception as e:
         if con: con.rollback()
         logging.error(f"Error in /delete_property: {e}", exc_info=True)
-        return jsonify(error="An internal server error occurred"), 500
+        return jsonify(error="please check all the details before Submitting"), 500
     finally:
         if cursor: cursor.close()
         if con: con.close()
@@ -398,7 +511,7 @@ def get_agent_conversations():
         return jsonify(conversations=conversations), 200
     except Exception as e:
         logging.error(f"Error in /agent_conversations: {e}", exc_info=True)
-        return jsonify(error="An internal server error occurred"), 500
+        return jsonify(error="please check all the details before Submitting"), 500
     finally:
         if cursor: cursor.close()
         if con: con.close()
@@ -451,7 +564,7 @@ def get_agent_conversation_history():
         return jsonify(conversation_id=conversation_id, messages=messages), 200
     except Exception as e:
         logging.error(f"Error in /agent_conversation_history: {e}", exc_info=True)
-        return jsonify(error="An internal server error occurred"), 500
+        return jsonify(error="please check all the details before Submitting"), 500
     finally:
         if cursor: cursor.close()
         if con: con.close()
@@ -512,7 +625,7 @@ def set_featured_property():
     except Exception as e:
         if con: con.rollback()
         logging.error(f"Error in /set_featured_property: {e}", exc_info=True)
-        return jsonify(error="An internal server error occurred"), 500
+        return jsonify(error="please check all the details before Submitting"), 500
     finally:
         if cursor: cursor.close()
         if con: con.close()

@@ -56,7 +56,7 @@ def dashboard():
 
     except Exception as e:
         logging.error(f"An error occurred in /buyer_dashboard: {e}", exc_info=True)
-        return jsonify(error="An internal server error occurred"), 500
+        return jsonify(error="please check all the details before Submitting"), 500
 
     finally:
         # 5. Ensure the connection is always closed
@@ -161,7 +161,7 @@ def request_appointment():
     except Exception as e:
         if con: con.rollback()
         logging.error(f"Error in /request_appointment: {e}", exc_info=True)
-        return jsonify(error="An internal server error occurred"), 500
+        return jsonify(error="please check all the details before Submitting"), 500
 
     finally:
         if cursor: cursor.close()
@@ -224,7 +224,7 @@ def get_my_appointments():
 
     except Exception as e:
         logging.error(f"Error in /my_appointments: {e}", exc_info=True)
-        return jsonify(error="An internal server error occurred"), 500
+        return jsonify(error="please check all the details before Submitting"), 500
 
     finally:
         if cursor: cursor.close()
@@ -283,7 +283,7 @@ def cancel_appointment():
     except Exception as e:
         if con: con.rollback()
         logging.error(f"Error in /cancel_appointment: {e}", exc_info=True)
-        return jsonify(error="An internal server error occurred"), 500
+        return jsonify(error="please check all the details before Submitting"), 500
 
     finally:
         if cursor: cursor.close()
@@ -365,7 +365,7 @@ def compare_properties():
 
     except Exception as e:
         logging.error(f"Error in /compare_properties: {e}", exc_info=True)
-        return jsonify(error="An internal server error occurred"), 500
+        return jsonify(error="please check all the details before Submitting"), 500
     finally:
         if cursor: cursor.close()
         if con: con.close()

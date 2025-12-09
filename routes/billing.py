@@ -300,7 +300,7 @@ def get_credit_plans():
         return jsonify(credit_plans=plans), 200
     except Exception as e:
         logging.error(f"Error in /get_credit_plans: {e}", exc_info=True)
-        return jsonify(error="An internal server error occurred"), 500
+        return jsonify(error="please check all the details before Submitting"), 500
     finally:
         if cursor: cursor.close()
         if con: con.close()
@@ -518,7 +518,7 @@ def get_my_transactions():
         return jsonify(transactions=transactions), 200
     except Exception as e:
         logging.error(f"Error in /my_transactions: {e}", exc_info=True)
-        return jsonify(error="An internal server error occurred"), 500
+        return jsonify(error="please check all the details before Submitting"), 500
     finally:
         if cursor: cursor.close()
         if con: con.close()
