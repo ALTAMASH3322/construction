@@ -1,5 +1,5 @@
 import logging
-from flask import Blueprint, app, request, redirect, url_for, flash, session, jsonify, Flask ,current_app
+from flask import Blueprint, app, render_template_string, request, redirect, url_for, flash, session, jsonify, Flask ,current_app
 from app import getConnection 
 import os
 from werkzeug.utils import secure_filename
@@ -1810,7 +1810,7 @@ def forgot_password():
         # NOTE: In production, it is safer to load the domain from an environment variable 
         # (e.g., os.getenv('FRONTEND_URL')) rather than request.host_url to prevent header injection.
         # For now, we stick to request.host_url to ensure it works with your current setup.
-        reset_link = f"{request.host_url}auth/reset-page/{token}"
+        reset_link = f"{request.host_url}reset-page/{token}"
 
         # 5. Send Email (Using your custom send_email function)
         subject = "Reset Your Password"
